@@ -19,7 +19,7 @@ public function login(Request $request)
 
     if (Auth::attempt($credentials)) {
         $user = Auth::user();
-        $token = $user->createToken('MyApp')->accessToken;
+        $token = $user->createToken('ds')->accessToken;
         return response()->json(['token' => $token]);
     }
 

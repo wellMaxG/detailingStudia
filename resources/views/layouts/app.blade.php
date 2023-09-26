@@ -30,22 +30,77 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item ">
+
+                            <a href="{{ url('/') }}" class="nav-link" aria-current="page">
+                
+                                {{ __('Главная') }}
+                            
+                            </a>
+                
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a href="{{ route('services.index') }}" class="nav-link" aria-current="page">
+                
+                                {{ __('Услуги') }}
+                            
+                            </a>
+                
+                        </li>
+                
+                        <li class="nav-item">
+                
+                            <a href="{{ route('appointments.index') }}" class="nav-link" aria-current="page">
+                
+                                {{ __('Онлайн-запись') }}
+                            
+                            </a>
+                
+                        </li>
 
                     </ul>
 
+
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
+                            <li class="nav-item">
+                    
+                                <a href="{{ route('employees.index') }}" class="nav-link" aria-current="page">
+                    
+                                    {{ __('Сотрудники') }}
+                                
+                                </a>
+                    
+                            </li>
+                    
+                            <li class="nav-item">
+                    
+                                <a href="{{ route('users.index') }}" class="nav-link" aria-current="page">
+                    
+                                    {{ __('Клиенты') }}
+                                
+                                </a>
+                    
+                            </li>
+                
+                            
+                
+                        
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Вход') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                                 </li>
                             @endif
                         @else
@@ -55,10 +110,17 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    
+                                <a href="{{ route('office.profile') }}" class="dropdown-item" aria-current="page">
+                    
+                                    {{ __('Личный кабинет') }}
+                                
+                                </a>
+                           
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Выход') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

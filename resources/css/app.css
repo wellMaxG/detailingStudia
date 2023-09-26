@@ -1,0 +1,56 @@
+/* Базовые стили для всего приложения */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e40505;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Стили для конкретных компонентов приложения */
+/* Пример стилей для навигационного меню */
+.nav-menu {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+}
+
+.nav-menu ul li {
+    display: block;
+    margin: 10px 0;
+}
+
+/* Другие стили для ваших компонентов */
