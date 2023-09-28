@@ -1,23 +1,27 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\AdminServicesController;
+use App\Http\Controllers\AdminUsersController;
+// use App\Http\Controllers\Admin\AdminAppointmentsController;
+// use App\Http\Controllers\Admin\AdminServicesController;
+// use App\Http\Controllers\Admin\AdminEmployeesController;
+
 use App\Http\Controllers\OfficeController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AppointmentsController;
-
 use App\Http\Controllers\EmployeesController;
-
 use App\Http\Controllers\ServicesController;
-
 use App\Http\Controllers\UserController;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('home');
+});
 
   
 //   Route::group(['middleware' => 'guest'], function() {
@@ -33,8 +37,6 @@ Route::get('/profile', [OfficeController::class, 'profile'])->name('office.profi
 //     Route::get('/profile/edit', [OfficeController::class, 'editProfile'])->name('office.editProfile');
 //     Route::put('/profile/update', [OfficeController::class, 'updateProfile'])->name('office.updateProfile');
 
-// Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware('role:admin');
-
 // Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 //     // Маршруты для административной панели
 //     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
@@ -46,31 +48,44 @@ Route::get('/profile', [OfficeController::class, 'profile'])->name('office.profi
 //     Route::resource('employees', Admin\EmployeesController::class);
 
 //     Route::resource('clients', Admin\UserController::class);
+
 // });
 
-
+Auth::routes();
 
 Route::middleware(['admin'])->group(function () {
 
 // Маршруты, доступные только для администраторов
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::resource('services', Admin\ServicesController::class);
-Route::resource('appointments', Admin\AppointmentsController::class);
-Route::resource('employees', Admin\EmployeesController::class);
-Route::resource('users', Admin\UserController::class);
+// Route::resource('admin/services', AdminServicesController::class);
+// Route::resource('admin/appointments', AdminAppointmentsController::class);
+// Route::resource('admin/employees', AdminEmployeesController::class);
 
+Route::get('admin/users', [AdminUsersController::class, 'index'])->name('admin.index');
+Route::get('admin/users/create', [AdminUsersController::class, 'create'])->name('admin.create');
+Route::post('admin/users', [AdminUsersController::class, 'store'])->name('admin.store');
+Route::get('admin/users/{user}',[AdminUsersController::class, 'show'])->name('admin.show');
+Route::get('admin/users/{user}/edit',[AdminUsersController::class, 'edit'])->name('admin.edit');
+Route::put('admin/users/{user}', [AdminUsersController::class, 'update'])->name('admin.update');
+
+Route::get('admin/users/delete/{id}', [AdminUsersController::class, 'destroy']);
+Route::delete('admin/users/delete/{user}', [AdminUsersController::class, 'delete'])->name('admin.delete');
+
+// Route::resource('admin/users', AdminUsersController::class);
+
+});
 
 // Маршруты для контроллера "Клиенты"
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::get('/users/{user}',[UserController::class, 'show'])->name('users.show');
-Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('users.edit');
-Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+// Route::get('/users', [UserController::class, 'index'])->name('users.index');
+// Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+// Route::post('/users', [UserController::class, 'store'])->name('users.store');
+// Route::get('/users/{user}',[UserController::class, 'show'])->name('users.show');
+// Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('users.edit');
+// Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 
-Route::get('users/delete/{id}', [UserController::class, 'destroy']);
-Route::delete('/users/delete/{user}', [UserController::class, 'delete'])->name('users.delete');
-Route::resource('users', UserController::class);
+// Route::get('users/delete/{id}', [UserController::class, 'destroy']);
+// Route::delete('/users/delete/{user}', [UserController::class, 'delete'])->name('users.delete');
+// Route::resource('users', UserController::class);
 
 // Маршруты для контроллера "Сотрудники"
 Route::get('/employees', [EmployeesController::class, 'index'])->name('employees.index');
@@ -108,13 +123,13 @@ Route::get('appointments/delete/{id}', [AppointmentsController::class, 'destroy'
 Route::delete('/appointments/delete/{appointment}', [AppointmentsController::class, 'delete'])->name('appointments.delete');
 Route::resource('appointments', AppointmentsController::class);
 
-});
+// });
 
-Auth::routes();
+
 
 // Маршруты для сброса пароля
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+// Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+// Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 

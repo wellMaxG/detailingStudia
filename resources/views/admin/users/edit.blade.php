@@ -5,7 +5,7 @@
 
     <x-validation-errors />
 
-    <form method="POST" action="{{ route('users.update', $user->id) }}">
+    <form method="POST" action="{{ route('admin.update', $user->id) }}">
         @csrf
         @method('PUT')
 

@@ -6,7 +6,7 @@
 
     <x-validation-errors />
     
-    <form method="POST" action="{{ route('users.store') }}">
+    <form method="POST" action="{{ route('admin.store') }}">
         @csrf
 
         <div class="form-group">

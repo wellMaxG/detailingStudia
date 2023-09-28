@@ -14,10 +14,21 @@ class Service extends Model
         'description',
         'price',
         'duration_minutes',
+        'is_public',
     ];
 
     public function appointments()
     {
         return $this->hasMany(Appointment::class);
     }
+
+//     public function isPublic()
+// {
+//     return $this->is_public;
 }
+// public function isAdmin()
+// {
+//     return $this->role === 'admin';
+// }
+
+// }

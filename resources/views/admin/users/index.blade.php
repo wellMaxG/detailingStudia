@@ -6,7 +6,7 @@
 
     <h1>Список клиентов</h1>
 
-    <x-span-bt-create href="{{ route('users.create') }}">Добавить клиента</x-span-bt-create>
+    <x-span-bt-create href="{{ route('admin.create') }}">Добавить клиента</x-span-bt-create>
 
     <x-table>
 
@@ -33,11 +33,11 @@
                     <td>{{ $user->phone }}</td>
                     <td>
 
-                        <x-span-bt-edit href="{{ route('users.edit', $user->id) }}">Редактировать</x-span-bt-edit>
+                        <x-span-bt-edit href="{{ route('admin.edit', $user->id) }}">Редактировать</x-span-bt-edit>
 
-                        <x-span-bt-show href="{{ route('users.show', $user->id) }}">Просмотреть</x-span-bt-show>
+                        <x-span-bt-show href="{{ route('admin.show', $user->id) }}">Просмотреть</x-span-bt-show>
 
-                        <x-span-bt-delete href="{{ route('users.delete', $user->id) }}">Удалить</x-span-bt-delete>
+                        <x-span-bt-delete href="{{ route('admin.delete', $user->id) }}">Удалить</x-span-bt-delete>
 
                     </td>
 

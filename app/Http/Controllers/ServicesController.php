@@ -10,35 +10,35 @@ class ServicesController extends Controller
     public function index()
     {
         $services = Service::all(); // Получаем список всех услуг из базы данных
-        return view('admin.services.index', compact('services'));
+        return view('services.index', compact('services'));
     }
 
-    public function create()
-    {
-        return view('admin.services.create');
-    }
+    // public function create()
+    // {
+    //     return view('admin.services.create');
+    // }
 
-    public function store(Request $request)
-    {
-        // Валидация данных, пример:
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric',
-            'duration_minutes' => 'required|string',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     // Валидация данных, пример:
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string',
+    //         'description' => 'nullable|string',
+    //         'price' => 'required|numeric',
+    //         'duration_minutes' => 'required|string',
+    //     ]);
 
-        // Создаем новую услугу в базе данных
-        Service::create($validatedData);
+    //     // Создаем новую услугу в базе данных
+    //     Service::create($validatedData);
 
-        // Редирект на страницу со списком услуг
-        return redirect()->route('services.index')->with('success', 'Услуга успешно добавлена!');
-    }
+    //     // Редирект на страницу со списком услуг
+    //     return redirect()->route('services.index')->with('success', 'Услуга успешно добавлена!');
+    // }
 
-    public function edit(Service $service)
-    {
-        return view('admin.services.edit', compact('service'));
-    }
+    // public function edit(Service $service)
+    // {
+    //     return view('admin.services.edit', compact('service'));
+    // }
 
     public function show($id)
 {
@@ -46,40 +46,40 @@ class ServicesController extends Controller
     return view('services.show', compact('service'));
 }
 
-    public function update(Request $request, Service $service)
-    {
-        // Валидация данных, пример:
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric',
-            'duration_minutes' => 'required|string',
-        ]);
+//     public function update(Request $request, Service $service)
+//     {
+//         // Валидация данных, пример:
+//         $validatedData = $request->validate([
+//             'name' => 'required|string',
+//             'description' => 'nullable|string',
+//             'price' => 'required|numeric',
+//             'duration_minutes' => 'required|string',
+//         ]);
 
-        // Обновляем данные услуги
-        $service->update($validatedData);
+//         // Обновляем данные услуги
+//         $service->update($validatedData);
 
-        // Редирект на страницу со списком услуг
-        return redirect()->route('services.index');
-    }
+//         // Редирект на страницу со списком услуг
+//         return redirect()->route('services.index');
+//     }
 
-    public function destroy($id)
-    {
-        $service = Service::findOrFail($id);
+//     public function destroy($id)
+//     {
+//         $service = Service::findOrFail($id);
 
-        return view('admin.services.delete', compact('service'));
-    }
+//         return view('admin.services.delete', compact('service'));
+//     }
 
-    public function delete($id)
-    {
-        $service = Service::findOrFail($id);
+//     public function delete($id)
+//     {
+//         $service = Service::findOrFail($id);
 
-        $service->delete();
+//         $service->delete();
 
-        session()->flash('success', 'Услуга успешно удалена.');
+//         session()->flash('success', 'Услуга успешно удалена.');
 
-        return redirect()->route('services.index');
+//         return redirect()->route('services.index');
 
-    }
+//     }
 }
 

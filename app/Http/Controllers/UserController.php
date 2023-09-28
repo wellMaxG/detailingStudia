@@ -10,30 +10,30 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all(); // Получаем список всех клиентов из базы данных
-        return view('admin.users.index', compact('users'));
+        return view('index', compact('users'));
     }
 
-    public function create()
-    {
-        return view('admin.users.create');
-    }
+    // public function create()
+    // {
+    //     return view('admin.users.create');
+    // }
 
-    public function store(Request $request)
-    {
-        // Валидация данных, пример:
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'phone' => 'nullable|string',
-            'password' => 'required|string',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     // Валидация данных, пример:
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string',
+    //         'email' => 'required|string|email|unique:users',
+    //         'phone' => 'nullable|string',
+    //         'password' => 'required|string',
+    //     ]);
 
-        // Создаем нового клиента в базе данных
-        User::create($validatedData);
+    //     // Создаем нового клиента в базе данных
+    //     User::create($validatedData);
 
-        // Редирект на страницу со списком клиентов
-        return redirect()->route('users.index')->with('success', 'Клиент успешно добавлен!');
-    }
+    //     // Редирект на страницу со списком клиентов
+    //     return redirect()->route('users.index')->with('success', 'Клиент успешно добавлен!');
+    // }
 
     public function show($id)
 {
@@ -45,43 +45,43 @@ class UserController extends Controller
 }
 
 
-    public function edit(User $user)
-    {
-        return view('admin.users.edit', compact('user'));
-    }
+    // public function edit(User $user)
+    // {
+    //     return view('admin.users.edit', compact('user'));
+    // }
 
-    public function update(Request $request, User $user)
-    {
-        // Валидация данных, пример:
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users,email,' . $user->id, // Исключаем текущего клиента по ID
-            'phone' => 'nullable|string',
-            'password' => 'required|string',
-        ]);
+    // public function update(Request $request, User $user)
+    // {
+    //     // Валидация данных, пример:
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string',
+    //         'email' => 'required|string|email|unique:users,email,' . $user->id, // Исключаем текущего клиента по ID
+    //         'phone' => 'nullable|string',
+    //         'password' => 'required|string',
+    //     ]);
 
-        // Обновляем данные клиента
-        $user->update($validatedData);
+    //     // Обновляем данные клиента
+    //     $user->update($validatedData);
 
-        // Редирект на страницу со списком клиентов
-        return redirect()->route('users.index');
-    }
+    //     // Редирект на страницу со списком клиентов
+    //     return redirect()->route('users.index');
+    // }
 
-    public function destroy($id)
-    {
-        $user = User::findOrFail($id);
+//     public function destroy($id)
+//     {
+//         $user = User::findOrFail($id);
 
-        return view('admin.users.delete', compact('user'));
-    }
-    public function delete($id)
-    {
-        $user = User::findOrFail($id);
+//         return view('admin.users.delete', compact('user'));
+//     }
+//     public function delete($id)
+//     {
+//         $user = User::findOrFail($id);
 
-        $user->delete();
+//         $user->delete();
 
-        session()->flash('success', 'Клиент успешно удален.');
+//         session()->flash('success', 'Клиент успешно удален.');
 
-        return redirect()->route('users.index');
+//         return redirect()->route('users.index');
 
-    }
+//     }
 }

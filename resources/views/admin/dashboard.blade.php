@@ -18,7 +18,7 @@
 
                         <p class="card-text">Перечень клиентов с возможностью добавление, редактирования, удаления.</p>
 
-                        <x-span-bt-edit href="{{ route('users.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
+                        <x-span-bt-edit href="{{ route('admin.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
 
                     </div>
 
