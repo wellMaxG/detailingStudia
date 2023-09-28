@@ -10,12 +10,12 @@ class EmployeesController extends Controller
     public function index()
     {
         $employees = Employee::all(); // Получаем список всех сотрудников из базы данных
-        return view('employees.index', compact('employees'));
+        return view('admin.employees.index', compact('employees'));
     }
 
     public function create()
     {
-        return view('employees.create');
+        return view('admin.employees.create');
     }
 
 
@@ -38,12 +38,12 @@ class EmployeesController extends Controller
     public function show($id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employees.show', compact('employee'));
+        return view('admin.employees.show', compact('employee'));
     }
 
     public function edit(Employee $employee)
     {
-        return view('employees.edit', compact('employee'));
+        return view('admin.employees.edit', compact('employee'));
     }
 
 
@@ -64,7 +64,7 @@ class EmployeesController extends Controller
     {
         $employee = Employee::findOrFail($id);
 
-        return view('employees.delete', compact('employee'));
+        return view('admin.employees.delete', compact('employee'));
 
     }
 

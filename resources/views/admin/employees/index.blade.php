@@ -5,7 +5,7 @@
 <x-span-success />
 
     <h1>Список сотрудников</h1>
-
+    
     <x-span-bt-create href="{{ route('employees.create') }}">Добавить сотрудника</x-span-bt-create>
 
     <x-table>
@@ -50,5 +50,7 @@
         </tbody>
 
     </x-table>
+
+    <x-span-bt-create href="{{ route('admin.dashboard') }}">Назад</x-span-bt-create>
 
 @endsection

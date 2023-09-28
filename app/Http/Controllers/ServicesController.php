@@ -10,12 +10,12 @@ class ServicesController extends Controller
     public function index()
     {
         $services = Service::all(); // Получаем список всех услуг из базы данных
-        return view('services.index', compact('services'));
+        return view('admin.services.index', compact('services'));
     }
 
     public function create()
     {
-        return view('services.create');
+        return view('admin.services.create');
     }
 
     public function store(Request $request)
@@ -37,7 +37,7 @@ class ServicesController extends Controller
 
     public function edit(Service $service)
     {
-        return view('services.edit', compact('service'));
+        return view('admin.services.edit', compact('service'));
     }
 
     public function show($id)
@@ -67,7 +67,7 @@ class ServicesController extends Controller
     {
         $service = Service::findOrFail($id);
 
-        return view('services.delete', compact('service'));
+        return view('admin.services.delete', compact('service'));
     }
 
     public function delete($id)

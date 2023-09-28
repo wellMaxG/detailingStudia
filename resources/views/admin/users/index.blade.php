@@ -49,4 +49,6 @@
 
     </x-table>
 
+    <x-span-bt-create href="{{ route('admin.dashboard') }}">Назад</x-span-bt-create>
+
 @endsection

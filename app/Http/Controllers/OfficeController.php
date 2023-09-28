@@ -9,7 +9,8 @@ class OfficeController extends Controller
     public function profile()
     {
         $user = auth()->user(); // Получение текущего аутентифицированного пользователя
-        return view('users.office.profile', compact('user'));
+        return view('admin.users.office.profile', compact('user'));
+        
     }
 
     public function editProfile()

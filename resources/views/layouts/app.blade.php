@@ -1,7 +1,10 @@
 <!doctype html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -20,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -32,7 +35,7 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item ">
 
-                            <a href="{{ url('/') }}" class="nav-link" aria-current="page">
+                            <a href="{{ url('/home') }}" class="nav-link" aria-current="page">
                 
                                 {{ __('Главная') }}
                             
@@ -62,34 +65,10 @@
 
                     </ul>
 
-
-
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
 
-                            <li class="nav-item">
-                    
-                                <a href="{{ route('employees.index') }}" class="nav-link" aria-current="page">
-                    
-                                    {{ __('Сотрудники') }}
-                                
-                                </a>
-                    
-                            </li>
-                    
-                            <li class="nav-item">
-                    
-                                <a href="{{ route('users.index') }}" class="nav-link" aria-current="page">
-                    
-                                    {{ __('Клиенты') }}
-                                
-                                </a>
-                    
-                            </li>
-                
-                            
-                
-                        
+                        <ul class="navbar-nav ms-auto">              
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -118,7 +97,9 @@
                                 </a>
                            
                                     <a class="dropdown-item" href="{{ route('logout') }}"
+
                                        onclick="event.preventDefault();
+                                       
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Выход') }}
                                     </a>
@@ -127,7 +108,21 @@
                                         @csrf
                                     </form>
                                 </div>
+
+                            
+                                    <li class="nav-item">
+
+                                    @if(auth()->user()->role === 'admin')
+        
+                                        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Административная панель</a>
+
+                                    </li>
+        
+                                    @endif
+
+                                    
                             </li>
+
                         @endguest
                     </ul>
                 </div>

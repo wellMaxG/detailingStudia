@@ -10,7 +10,7 @@
      
     <!-- Этот блок будет отображаться только для аутентифицированных пользователей -->
 
-    @if (Auth::check())
+    {{-- @if (Auth::check()) --}}
 
       <div class="collapse navbar-collapse " id="navbar-collapse">
 
@@ -18,7 +18,7 @@
 
         <li class="nav-item ">
 
-            <a href="{{ route('home.index') }}" class="nav-link {{ Route::is('home.index') ? 'active' : '' }} text-white" aria-current="page">
+            <a href="{{ route('home.index') }}" class="nav-link" aria-current="page">
 
                 {{ __('Главная') }}
             
@@ -28,7 +28,7 @@
 
         <li class="nav-item">
 
-            <a href="{{ route('services.index') }}" class="nav-link {{ Route::is('service*') ? 'active' : '' }} text-white" aria-current="page">
+            <a href="{{ route('services.index') }}" class="nav-link" aria-current="page">
 
                 {{ __('Услуги') }}
             
@@ -38,7 +38,7 @@
 
         <li class="nav-item">
 
-            <a href="{{ route('appointments.index') }}" class="nav-link {{ Route::is('service*') ? 'active' : '' }} text-white" aria-current="page">
+            <a href="{{ route('appointments.index') }}" class="nav-link" aria-current="page">
 
                 {{ __('Онлайн-запись') }}
             
@@ -48,11 +48,14 @@
 
         </ul>
 
+
+       
+
         <ul class="navbar-nav ms-auto mb-2 mb-md-0">
 
             <li class="nav-item">
     
-                <a href="{{ route('employees.index') }}" class="nav-link {{ Route::is('register') ? 'active' : '' }} text-white" aria-current="page">
+                <a href="{{ route('employees.index') }}" class="nav-link" aria-current="page">
     
                     {{ __('Сотрудники') }}
                 
@@ -62,7 +65,7 @@
     
             <li class="nav-item">
     
-                <a href="{{ route('users.index') }}" class="nav-link {{ Route::is('login') ? 'active' : ''  }} text-white" aria-current="page">
+                <a href="{{ route('users.index') }}" class="nav-link" aria-current="page">
     
                     {{ __('Клиенты') }}
                 
@@ -70,9 +73,13 @@
     
             </li>
 
+        </ul>
+
+           
+
             <li class="nav-item">
     
-                <a href="{{ route('office.profile') }}" class="nav-link {{ Route::is('login') ? 'active' : ''  }} text-white" aria-current="page">
+                <a href="{{ route('office.profile') }}" class="nav-link" aria-current="page">
     
                     {{ __('Личный кабинет') }}
                 
@@ -85,7 +92,7 @@
         </div>
 
 
-            @else
+            {{-- @else --}}
            
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0">
 
@@ -111,7 +118,7 @@
     
     </ul>
 
-@endif   
+{{-- @endif    --}}
     
 </div>
 

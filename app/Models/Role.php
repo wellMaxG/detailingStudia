@@ -9,7 +9,8 @@ class Role extends Model
     protected $table = 'roles'; // Имя таблицы ролей
 
     protected $fillable = [
-        'name', 'slug',
+        'name', 
+        'slug',
     ];
 
     // Определите отношение, если необходимо

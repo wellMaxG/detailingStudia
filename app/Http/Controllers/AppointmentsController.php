@@ -12,13 +12,13 @@ class AppointmentsController extends Controller
     public function index()
     {
         $appointments = Appointment::all(); // Получаем список всех записей из базы данных
-        return view('appointments.index', compact('appointments'));
+        return view('admin.appointments.index', compact('appointments'));
     }
 
     public function create()
     {
         $services = Service::all();
-        return view('appointments.create', compact('services'));
+        return view('admin.appointments.create', compact('services'));
     }
 
     public function store(Request $request)
@@ -41,13 +41,13 @@ class AppointmentsController extends Controller
     // Найдем клиента по его ID
     $appointment = Appointment::findOrFail($id);
   
-    return view('appointments.show', compact('appointment'));
+    return view('admin.appointments.show', compact('appointment'));
 }
    
     public function edit(Appointment $appointment)
     {
         $services = Service::all();
-        return view('appointments.edit', compact('appointment','services'));
+        return view('admin.appointments.edit', compact('appointment','services'));
     }
     
     public function update(Request $request, Appointment $appointment)
@@ -72,7 +72,7 @@ class AppointmentsController extends Controller
         
         $appointment = Appointment::findOrFail($id);
 
-        return view('appointments.delete', compact('appointment'));
+        return view('admin.appointments.delete', compact('appointment'));
 
     }
 

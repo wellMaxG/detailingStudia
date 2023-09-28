@@ -46,6 +46,7 @@ public function register(Request $request)
 
     $user->save();
 
+
     return response()->json(['message' => 'Successfully registered']);
 }
 
