@@ -6,12 +6,12 @@
 
         <p>Вы уверены, что хотите удалить сотрудника "{{ $employee->name }}"?</p>
 
-        <form method="POST" action="{{ route('employees.delete', $employee->id) }}">
+        <form method="POST" action="{{ route('employee.delete', $employee->id) }}">
             @csrf
             @method('DELETE')
 
             <button type="submit" class="btn btn-danger">Удалить</button>
-            <a href="{{ route('employees.index') }}" class="btn btn-secondary">Отмена</a>
+            <a href="{{ route('employee.index') }}" class="btn btn-secondary">Отмена</a>
         </form>
     </div>
 @endsection

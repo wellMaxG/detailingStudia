@@ -6,7 +6,7 @@
 
     <x-validation-errors />
 
-    <form action="{{ route('services.update', $service->id) }}" method="POST">
+    <form action="{{ route('service.update', $service->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -31,5 +31,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        
+        <a href="{{ route('service.index') }}" class="btn btn-secondary">Отмена</a>
     </form>
 @endsection

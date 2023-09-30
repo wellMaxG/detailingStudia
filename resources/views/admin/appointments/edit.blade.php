@@ -6,7 +6,7 @@
 
     <x-validation-errors />
 
-    <form method="POST" action="{{ route('appointments.update', $appointment->id) }}">
+    <form method="POST" action="{{ route('appointment.update', $appointment->id) }}">
         @csrf
 
         @method('PUT')
@@ -14,6 +14,11 @@
         <div class="form-group">
             <label for="client_name">Введите имя:</label>
             <input type="text" class="form-control" name="client_name" id="client_name" value="{{ old('client_name', $appointment->client_name) }}">
+        </div>
+
+        <div class="form-group">
+            <label for="phone" class="required">Введите телефон:</label>
+            <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone', $appointment->phone) }}">
         </div>
 
         <div class="form-group">
@@ -44,5 +49,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        
+        <a href="{{ route('appointment.index') }}" class="btn btn-secondary">Отмена</a> 
     </form>
 @endsection

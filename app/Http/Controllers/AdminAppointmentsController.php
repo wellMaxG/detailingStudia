@@ -7,11 +7,12 @@ use App\Models\Appointment;
 use App\Models\Service;
 
 
-class AppointmentsController extends Controller
+class AdminAppointmentsController extends Controller
 {
     public function index()
     {
-        $appointments = Appointment::all(); // Получаем список всех записей из базы данных
+        // Получаем список всех записей из базы данных \\
+        $appointments = Appointment::all(); 
         return view('admin.appointments.index', compact('appointments'));
     }
 
@@ -26,6 +27,7 @@ class AppointmentsController extends Controller
         // Валидация данных
         $validatedData = $request->validate([
         'client_name' => 'required|string',
+        'phone' => 'required|string',
         'service_id' => 'required|exists:services,id',
         'appointment_datetime' => 'required|date',
         'status' => 'required|string',
@@ -33,7 +35,7 @@ class AppointmentsController extends Controller
     ]);
         Appointment::create($validatedData);
     
-        return redirect()->route('appointments.index')->with('success', 'Вы успешно записались на услугу!');
+        return redirect()->route('appointment.index')->with('success', 'Запись успешно добавлена!');
     }
 
     public function show($id)
@@ -55,6 +57,7 @@ class AppointmentsController extends Controller
         // Валидация данных, пример:
         $validatedData = $request->validate([
             'client_name' => 'required|string',
+            'phone' => 'required|string',
             'service_id' => 'required|exists:services,id',
             'appointment_datetime' => 'required|date',
             'status' => 'required|string',
@@ -64,7 +67,7 @@ class AppointmentsController extends Controller
         $appointment->update($validatedData);
         
         // Редирект на страницу со списком записей
-        return redirect()->route('appointments.index');
+        return redirect()->route('appointment.index');
     }
 
     public function destroy($id)
@@ -84,7 +87,7 @@ class AppointmentsController extends Controller
 
         session()->flash('success', 'Запись успешно удалена.');
 
-        return redirect()->route('appointments.index');
+        return redirect()->route('appointment.index');
 
     }
 }

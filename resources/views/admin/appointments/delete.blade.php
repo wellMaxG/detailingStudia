@@ -6,12 +6,12 @@
 
         <p>Вы уверены, что хотите удалить запись "{{ $appointment->service->name }}" для клиента {{ $appointment->client_name }}?</p>
 
-        <form method="POST" action="{{ route('appointments.delete', $appointment->id) }}">
+        <form method="POST" action="{{ route('appointment.delete', $appointment->id) }}">
             @csrf
             @method('DELETE')
 
             <button type="submit" class="btn btn-danger">Удалить</button>
-            <a href="{{ route('appointments.index') }}" class="btn btn-secondary">Отмена</a>
+            <a href="{{ route('appointment.index') }}" class="btn btn-secondary">Отмена</a>
         </form>
     </div>
 @endsection

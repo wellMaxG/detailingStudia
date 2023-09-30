@@ -24,7 +24,7 @@
             
                     <p><strong>Email:</strong> {{ $user->email }}</p>
             
-                    <a href="{{ route('admin.index') }}" class="btn btn-primary">Назад к списку клиентов</a>
+                    <a href="{{ route('user.index') }}" class="btn btn-primary">Назад к списку клиентов</a>
             
                 </div>
                 

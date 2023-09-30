@@ -13,6 +13,7 @@ class Appointment extends Model
         // 'client_id',
         'client_name',
         'service_id',
+        'phone',
         'appointment_datetime',
         'status',
     ];

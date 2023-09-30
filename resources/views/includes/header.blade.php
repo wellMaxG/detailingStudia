@@ -98,7 +98,7 @@
 
                     <li class="nav-item">
     
-                        <a href="{{ route('register.index') }}" class="nav-link {{ Route::is('login') ? 'active' : ''  }} text-white" aria-current="page">
+                        <a href="{{ route('register.index') }}" aria-current="page">
     
                             {{ __('Регистрация') }}
                 
@@ -108,7 +108,7 @@
 
                     <li class="nav-item">
     
-                <a href="{{ route('login.index') }}" class="nav-link {{ Route::is('login') ? 'active' : ''  }} text-white" aria-current="page">
+                <a href="{{ route('login.index') }}" aria-current="page">
     
             {{ __('Войти') }}
                 

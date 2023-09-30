@@ -6,7 +6,7 @@
 
     <x-validation-errors />
 
-    <form action="{{ route('services.store') }}" method="POST">
+    <form action="{{ route('service.store') }}" method="POST">
         @csrf
 
         <div class="form-group">
@@ -30,5 +30,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Создать услугу</button>
+        
+        <a href="{{ route('service.index') }}" class="btn btn-secondary">Отмена</a>
     </form>
 @endsection

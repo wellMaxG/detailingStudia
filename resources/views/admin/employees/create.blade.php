@@ -6,7 +6,7 @@
 
     <x-validation-errors />
 
-    <form method="POST" action="{{ route('employees.store') }}">
+    <form method="POST" action="{{ route('employee.store') }}">
         @csrf
 
         <div class="form-group">
@@ -25,5 +25,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Создать сотрудника</button>
+        <a href="{{ route('employee.index') }}" class="btn btn-secondary">Отмена</a> 
     </form>
 @endsection

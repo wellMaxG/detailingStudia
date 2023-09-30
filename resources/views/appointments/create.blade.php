@@ -14,13 +14,13 @@
             @csrf
            
         <div class="form-group">
-            <label for="client_name" class="required">Введите имя:</label>
+            <label for="client_name" class="required">Ваше имя:</label>
             <input type="text" class="form-control" name="client_name" id="client_name" autofocus>
         </div>
 
         <div class="form-group">
-            <label for="phone" class="required">Введите телефон:</label>
-            <input type="text" class="form-control" name="phone" id="phone" autofocus>
+            <label for="client_name" class="required">Ваш телефон:</label>
+            <input type="text" class="form-control" name="client_name" id="client_name" autofocus>
         </div>
 
             <div class="form-group">
@@ -38,14 +38,14 @@
                 <input type="datetime-local" name="appointment_datetime" id="appointment_datetime" class="form-control" required>        
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="status">Статус</label>
                 <select class="form-control" name="status" id="status">
                     <option value="Запланировано">Запланировано</option>
                     <option value="В процессе">В процессе</option>
                     <option value="Завершено">Завершено</option>
                 </select>
-            </div>
+            </div> --}}
 
             <button type="submit" class="btn btn-primary">Записаться</button>
             <a href="{{ route('appointment.index') }}" class="btn btn-secondary">Отмена</a> 

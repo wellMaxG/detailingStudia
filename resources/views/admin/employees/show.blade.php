@@ -24,8 +24,8 @@
             
                     <p><strong>Специализация:</strong> {{ $employee->specialization }}</p>
             
-                    <a href="{{ route('employees.index') }}" class="btn btn-primary">Назад к списку сотрудников</a>
-            
+                    <a href="{{ route('employee.index') }}" class="btn btn-primary">Назад к списку сотрудников</a>
+                    
                 </div>
                 
             </div>

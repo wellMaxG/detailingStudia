@@ -9,16 +9,16 @@ use App\Models\Service;
 
 class AppointmentsController extends Controller
 {
-    public function index()
-    {
-        $appointments = Appointment::all(); // Получаем список всех записей из базы данных
-        return view('admin.appointments.index', compact('appointments'));
-    }
+    // public function index()
+    // {
+    //     $appointments = Appointment::all(); // Получаем список всех записей из базы данных
+    //     return view('appointments.index', compact('appointments'));
+    // }
 
     public function create()
     {
         $services = Service::all();
-        return view('admin.appointments.create', compact('services'));
+        return view('appointments.create', compact('services'));
     }
 
     public function store(Request $request)
@@ -41,7 +41,7 @@ class AppointmentsController extends Controller
     // Найдем клиента по его ID
     $appointment = Appointment::findOrFail($id);
   
-    return view('admin.appointments.show', compact('appointment'));
+    return view('appointments.show', compact('appointment'));
 }
    
     public function edit(Appointment $appointment)
@@ -67,24 +67,24 @@ class AppointmentsController extends Controller
         return redirect()->route('appointments.index');
     }
 
-    public function destroy($id)
-    {
+    // public function destroy($id)
+    // {
         
-        $appointment = Appointment::findOrFail($id);
+    //     $appointment = Appointment::findOrFail($id);
 
-        return view('admin.appointments.delete', compact('appointment'));
+    //     return view('admin.appointments.delete', compact('appointment'));
 
-    }
+    // }
 
-    public function delete($id)
-    {
-        $appointment = Appointment::findOrFail($id);
+    // public function delete($id)
+    // {
+    //     $appointment = Appointment::findOrFail($id);
 
-        $appointment->delete();
+    //     $appointment->delete();
 
-        session()->flash('success', 'Запись успешно удалена.');
+    //     session()->flash('success', 'Запись успешно удалена.');
 
-        return redirect()->route('appointments.index');
+    //     return redirect()->route('appointments.index');
 
-    }
+    // }
 }

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Rules\PhoneValidationRule;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -29,9 +31,10 @@ public function login(Request $request)
 public function register(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'name' => 'required|string',
-        'email' => 'required|string|email|unique:users',
-        'password' => 'required|string|min:6',
+        'name' => ['required', 'string'],
+        'phone' => ['required', 'string', 'max:15', Rule::unique('users', 'phone')->ignore($request->user()), new PhoneValidationRule],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string','min:4'],
     ]);
 
     if ($validator->fails()) {
@@ -40,6 +43,7 @@ public function register(Request $request)
 
     $user = new User([
         'name' => $request->name,
+        'phone' => $request->phone,
         'email' => $request->email,
         'password' => bcrypt($request->password),
     ]);
@@ -47,13 +51,13 @@ public function register(Request $request)
     $user->save();
 
 
-    return response()->json(['message' => 'Successfully registered']);
+    return response()->json(['message' => 'Вы успешно зарегистрированы!']);
 }
 
 public function logout(Request $request)
 {
     $request->user()->token()->revoke();
-    return response()->json(['message' => 'Successfully logged out']);
+    return response()->json(['message' => 'Вы успешно вышли из системы.']);
 }
 
 

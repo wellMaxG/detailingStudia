@@ -6,12 +6,13 @@
 
         <p>Вы уверены, что хотите удалить услугу "{{ $service->name }}"?</p>
 
-        <form method="POST" action="{{ route('services.delete', $service->id) }}">
+        <form method="POST" action="{{ route('service.delete', $service->id) }}">
             @csrf
             @method('DELETE')
 
             <button type="submit" class="btn btn-danger">Удалить</button>
-            <a href="{{ route('services.index') }}" class="btn btn-secondary">Отмена</a>
+            
+            <a href="{{ route('service.index') }}" class="btn btn-secondary">Отмена</a>
         </form>
     </div>
 @endsection

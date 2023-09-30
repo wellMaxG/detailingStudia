@@ -5,7 +5,7 @@
 
     <x-validation-errors />
 
-    <form method="POST" action="{{ route('admin.update', $user->id) }}">
+    <form method="POST" action="{{ route('user.update', $user->id) }}">
         @csrf
         @method('PUT')
 
@@ -30,5 +30,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <a href="{{ route('user.index') }}" class="btn btn-secondary">Отмена</a> 
     </form>
 @endsection

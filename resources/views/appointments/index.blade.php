@@ -6,7 +6,7 @@
 
     <h1>Список записей на услуги</h1>
 
-    {{-- <x-span-bt-create href="{{ route('appointments.create') }}">Добавить запись</x-span-bt-create> --}}
+    <x-span-bt-create href="{{ route('appointments.create') }}">Добавить запись</x-span-bt-create>
 
     <x-table>
 
@@ -35,11 +35,7 @@
                     <td>{{ $appointment->status }}</td>
                     <td>
 
-                        {{-- <x-span-bt-edit href="{{ route('appointments.edit', $appointment->id) }}">Редактировать</x-span-bt-edit> --}}
-
                         <x-span-bt-show href="{{ route('appointments.show', $appointment->id) }}">Просмотреть</x-span-bt-show>
-
-                        {{-- <x-span-bt-delete href="{{ route('appointments.delete', $appointment->id) }}">Удалить</x-span-bt-delete> --}}
 
                     </td>
 

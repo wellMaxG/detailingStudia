@@ -18,7 +18,7 @@
 
                         <p class="card-text">Перечень клиентов с возможностью добавление, редактирования, удаления.</p>
 
-                        <x-span-bt-edit href="{{ route('admin.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
+                        <x-span-bt-edit href="{{ route('user.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
 
                     </div>
 
@@ -36,7 +36,7 @@
 
                         <p class="card-text">Перечень сотрудников с возможностью добавление, редактирования, удаления.</p>
 
-                        <x-span-bt-edit href="{{ route('employees.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
+                        <x-span-bt-edit href="{{ route('employee.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
 
                     </div>
 
@@ -55,7 +55,7 @@
 
                         <p class="card-text">Перечень услуг с возможностью добавление, редактирования, удаления.</p>
 
-                        <x-span-bt-edit href="{{ route('services.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
+                        <x-span-bt-edit href="{{ route('service.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
 
                     </div>
 
@@ -71,7 +71,8 @@
 
                     <div class="card-body">    
                         <p class="card-text">Перечень записей с возможностью добавление, редактирования, удаления.</p>
-                        <x-span-bt-edit href="{{ route('appointments.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
+
+                        <x-span-bt-edit href="{{ route('appointment.index') }}" class="btn btn-primary">Подробнее...</x-span-bt-edit>
                     </div>
 
                 </div>

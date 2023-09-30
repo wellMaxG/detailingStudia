@@ -49,5 +49,7 @@
         </tbody>
 
     </x-table>
+
+    <x-span-bt-create href="{{ url('/home') }}">На главную</x-span-bt-create>
     
 @endsection

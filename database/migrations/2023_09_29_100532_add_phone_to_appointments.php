@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('services', function (Blueprint $table) {
-   
-        $table->BOOLEAN('is_public'); 
-
-
+        Schema::table('appointments', function (Blueprint $table) {
+            $table->string('phone')->nullable(); // Новое поле
         });
     }
 
@@ -24,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('services', function (Blueprint $table) {
+        Schema::table('appointments', function (Blueprint $table) {
             //
         });
     }

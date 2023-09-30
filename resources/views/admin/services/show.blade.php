@@ -25,7 +25,7 @@
 
     <p><strong>Длительность:</strong> {{ $service->duration_minutes }}</p>
 
-    <a href="{{ route('services.index') }}" class="btn btn-primary">Назад к списку услуг</a>
+    <a href="{{ route('service.index') }}" class="btn btn-primary">Назад к списку услуг</a>
 
     
 </div>

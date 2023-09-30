@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 <head>
 
     <meta charset="utf-8">
@@ -35,7 +36,7 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item ">
 
-                            <a href="{{ url('/home') }}" class="nav-link" aria-current="page">
+                            <a href="{{ url('/') }}" class="nav-link" aria-current="page">
                 
                                 {{ __('Главная') }}
                             
@@ -52,18 +53,20 @@
                             </a>
                 
                         </li>
-                
+
                         <li class="nav-item">
                 
-                            <a href="{{ route('appointments.index') }}" class="nav-link" aria-current="page">
+                            <a href="{{ route('appointments.create') }}" class="nav-link" aria-current="page">
                 
-                                {{ __('Онлайн-запись') }}
+                                {{ __('Записаться online') }}
                             
                             </a>
                 
                         </li>
 
                     </ul>
+
+                    
 
                     <!-- Right Side Of Navbar -->
 
@@ -101,6 +104,7 @@
                                        onclick="event.preventDefault();
                                        
                                                      document.getElementById('logout-form').submit();">
+
                                         {{ __('Выход') }}
                                     </a>
 

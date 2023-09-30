@@ -34,7 +34,7 @@ class AdminUsersController extends Controller
         User::create($validatedData);
 
         // Редирект на страницу со списком клиентов
-        return redirect()->route('admin.index')->with('success', 'Клиент успешно добавлен!');
+        return redirect()->route('user.index')->with('success', 'Клиент успешно добавлен!');
     }
 
     public function show($id)
@@ -66,7 +66,7 @@ class AdminUsersController extends Controller
         $user->update($validatedData);
 
       // Редирект на страницу со списком клиентов
-        return redirect()->route('admin.index');
+        return redirect()->route('user.index');
     }
   
     public function destroy($id)
@@ -83,7 +83,7 @@ class AdminUsersController extends Controller
             
                     session()->flash('success', 'Клиент успешно удален.');
             
-                    return redirect()->route('admin.index');
+                    return redirect()->route('user.index');
             
     }
 }
