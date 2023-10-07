@@ -36,7 +36,6 @@ class AppointmentsController extends Controller
         // 'appointment_datetime' => 'required|date',
         // 'question' => 'nullable|string',
     ]);
-    // $appointment->save();
     
         Appointment::create($validatedData);
 
