@@ -7,13 +7,27 @@
     <div class="container">
 
         <x-span-success />
-
+        
         <h1>Запись на услугу</h1>
-
+        
+        @if(auth()->check()) <!-- Проверяем, зарегистрирован ли пользователь -->
+        <!-- Если пользователь зарегистрирован, скрываем поле user_id -->
+        {{-- {{ Form::hidden('user_id', auth()->user()->id) }} --}}
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+        {{-- @else --}}
+        <!-- Если пользователь не зарегистрирован, оставляем поле user_id видимым -->
+        {{-- {{ Form::label('user_id', 'User ID') }} --}}
+        {{-- {{ Form::text('user_id', null, ['class' => 'form-control']) }} --}}
+        @endif
+        
+        
+        
+        
+        
         <form method="POST" action="{{ route('appointments.store') }}">
             @csrf
             
-            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+            
 
         <div class="form-group">
             <label for="client_name" class="required">Ваше имя:</label>
@@ -49,8 +63,9 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Записаться</button>
-            <a href="{{ route('appointment.index') }}" class="btn btn-secondary">Отмена</a> 
+            <a href="{{ url('/') }}" class="btn btn-secondary">Отмена</a> 
         </form>
+        {{-- @endif --}}
     </div>
     @endsection
 

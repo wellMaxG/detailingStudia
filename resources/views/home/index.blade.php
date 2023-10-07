@@ -3,6 +3,8 @@
 @section('main.content')
 
 <div class="text-center">
+    
+    <x-span-success />
 
     <h1>
 

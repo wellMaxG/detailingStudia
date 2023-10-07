@@ -17,6 +17,9 @@ class AppointmentsController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+       
+
         // Валидация данных
         $validatedData = $request->validate([
         'client_name' => 'required|string',
@@ -26,21 +29,23 @@ class AppointmentsController extends Controller
         'question' => 'nullable|string',
         'user_id' => 'nullable|string',
     ]);
-        $user = Auth::user();
+    if (!$user) {
+        $validatedData['user_id'] = 999;
+        } else {
+        $validatedData['user_id'] = $user->id;
+        }
         
-        $appointment = new Appointment([
-        'user_id' => $user->id,
-        // 'client_name' => 'required|string',
-        // 'phone' => 'nullable|string',
-        // 'service_id' => 'required|exists:services,id',
-        // 'appointment_datetime' => 'required|date',
-        // 'question' => 'nullable|string',
-    ]);
+        
+    //     $appointment = new Appointment([
+    //     // 'user_id' => $user->id,
+    //     // 'user_id' => $user ? $user->id : null,
+    //     // 'is_registered' => $isRegistered,
+    // ]);
     
         Appointment::create($validatedData);
 
 
-        return redirect()->route('office.profile')->with('success', 'Вы успешно записались на услугу!');
+        return redirect()->route('home')->with('success', 'Вы успешно записались на услугу!');
     }
 
     public function show($id)

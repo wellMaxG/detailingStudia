@@ -12,9 +12,9 @@
 </head>
 <body>
     <div class="d-flex flex-column justify-content-between min-vh-100 bg-dark text-white" id="app">
-
+        
         @include('includes.header')
-
+        
         <main> 
     
             <div class="flex-grow-1 py-3">

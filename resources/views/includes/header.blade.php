@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-s border-bottom border-info">
 
     <div class="container">
-        <a class="navbar-brand " href="{{ url('/home') }}">
+        <a class="navbar-brand " href="{{ url('/') }}">
             {{ config('app.name') }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
