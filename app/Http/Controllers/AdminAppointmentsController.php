@@ -31,8 +31,10 @@ class AdminAppointmentsController extends Controller
         'service_id' => 'required|exists:services,id',
         'appointment_datetime' => 'required|date',
         'status' => 'required|string',
+        'question' => 'string',
 
     ]);
+    
         Appointment::create($validatedData);
     
         return redirect()->route('appointment.index')->with('success', 'Запись успешно добавлена!');

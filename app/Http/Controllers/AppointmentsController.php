@@ -5,16 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Service;
-
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentsController extends Controller
 {
-    // public function index()
-    // {
-    //     $appointments = Appointment::all(); // Получаем список всех записей из базы данных
-    //     return view('appointments.index', compact('appointments'));
-    // }
-
     public function create()
     {
         $services = Service::all();
@@ -26,14 +20,28 @@ class AppointmentsController extends Controller
         // Валидация данных
         $validatedData = $request->validate([
         'client_name' => 'required|string',
+        'phone' => 'nullable|string',
         'service_id' => 'required|exists:services,id',
         'appointment_datetime' => 'required|date',
-        'status' => 'required|string',
-
+        'question' => 'nullable|string',
+        'user_id' => 'nullable|string',
     ]);
-        Appointment::create($validatedData);
+        $user = Auth::user();
+        
+        $appointment = new Appointment([
+        'user_id' => $user->id,
+        // 'client_name' => 'required|string',
+        // 'phone' => 'nullable|string',
+        // 'service_id' => 'required|exists:services,id',
+        // 'appointment_datetime' => 'required|date',
+        // 'question' => 'nullable|string',
+    ]);
+    // $appointment->save();
     
-        return redirect()->route('appointments.index')->with('success', 'Вы успешно записались на услугу!');
+        Appointment::create($validatedData);
+
+
+        return redirect()->route('office.profile')->with('success', 'Вы успешно записались на услугу!');
     }
 
     public function show($id)
@@ -66,25 +74,4 @@ class AppointmentsController extends Controller
         // Редирект на страницу со списком записей
         return redirect()->route('appointments.index');
     }
-
-    // public function destroy($id)
-    // {
-        
-    //     $appointment = Appointment::findOrFail($id);
-
-    //     return view('admin.appointments.delete', compact('appointment'));
-
-    // }
-
-    // public function delete($id)
-    // {
-    //     $appointment = Appointment::findOrFail($id);
-
-    //     $appointment->delete();
-
-    //     session()->flash('success', 'Запись успешно удалена.');
-
-    //     return redirect()->route('appointments.index');
-
-    // }
 }

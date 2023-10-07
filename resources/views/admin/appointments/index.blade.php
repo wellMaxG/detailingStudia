@@ -19,6 +19,7 @@
                 <th>Телефон</th>
                 <th>Дата и время</th>
                 <th>Статус</th>
+                <th>Вопрос клиента</th>
                 <th>Действия</th>
             </tr>
 
@@ -35,6 +36,7 @@
                     <td>{{ $appointment->phone }}</td>
                     <td>{{ $appointment->appointment_datetime }}</td>
                     <td>{{ $appointment->status }}</td>
+                    <td>{{ $appointment-> question }}</td>
                     <td>
 
                         <x-span-bt-edit href="{{ route('appointment.edit', $appointment->id) }}">Редактировать</x-span-bt-edit>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Rules\PhoneValidationRule;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,24 +48,6 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     
-    //  $messages = [
-    //     'email.required' => 'Поле электронной почты обязательно для заполнения.',
-    //     'password.required' => 'Поле пароля обязательно для заполнения.',
-    // ];
-    
-    // $validator = Validator::make($request->all(), [
-    //     'email' => 'required|email',
-    //     'password' => 'required',
-    // ], $messages);
-    
-    // if ($validator->fails()) {
-    //     // Обработка ошибок валидации
-    // }
-    
-
-
-
-
     protected function validator(array $data)
     {
         return Validator::make($data, [

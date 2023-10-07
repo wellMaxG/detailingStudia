@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+@section('page.title','Страница услуг')
+
 @section('content')
 
 <x-span-success />
 
-    <h1>Список услуг</h1>
+    <h1 class="h">Список услуг</h1>
 
     <x-table>
 
@@ -12,7 +14,6 @@
 
             <tr>
 
-                <th>ID</th>
                 <th>Название</th>
                 <th>Описание</th>
                 <th>Стоимость</th>
@@ -29,7 +30,6 @@
 
                 <tr>
 
-                    <td>{{ $service->id }}</td>
                     <td>{{ $service->name }}</td>
                     <td>{{ $service->description }}</td>
                     <td>{{ $service->price }}</td>
@@ -38,6 +38,8 @@
                     <td>
 
                         <x-span-bt-show href="{{ route('services.show', $service->id) }}">Подробнее...</x-span-bt-show>
+
+                        <x-bt-success href="{{ route('services.show', $service->id) }}">Записаться</x-bt-success>
 
 
                     </td>

@@ -20,7 +20,7 @@
 
         <div class="form-group">
             <label for="phone" class="required">Введите телефон:</label>
-            <input type="text" class="form-control" name="phone" id="phone" autofocus>
+            <input type="text" class="form-control" name="phone" id="phone">
         </div>
 
             <div class="form-group">
@@ -37,7 +37,7 @@
                 <label for="appointment_datetime">Выберите дату и время:</label>
                 <input type="datetime-local" name="appointment_datetime" id="appointment_datetime" class="form-control" required>        
             </div>
-
+            @if(auth()->user()->isAdmin())
             <div class="form-group">
                 <label for="status">Статус</label>
                 <select class="form-control" name="status" id="status">
@@ -46,6 +46,7 @@
                     <option value="Завершено">Завершено</option>
                 </select>
             </div>
+            @endif
 
             <button type="submit" class="btn btn-primary">Записаться</button>
             <a href="{{ route('appointment.index') }}" class="btn btn-secondary">Отмена</a> 

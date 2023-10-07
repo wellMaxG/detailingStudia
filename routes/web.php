@@ -18,7 +18,7 @@ use App\Http\Controllers\ServicesController;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () { return view('home'); });
+Route::get('/', function () { return view('home.index'); });
 
 
 
@@ -30,6 +30,7 @@ Route::get('/profile', [OfficeController::class, 'profile'])->name('office.profi
 //__________________Маршруты, доступные только для гостя__________________\\
 Auth::routes();
 Route::resource('services', ServicesController::class);
+Route::resource('appointments', AppointmentsController::class);
 
 //__________________Маршруты, доступные только для администраторов__________________\\
 Route::middleware(['admin'])->group(function () {
@@ -78,7 +79,7 @@ Route::delete('admin/appointments/delete/{appointment}', [AdminAppointmentsContr
 });
 
 
-Route::resource('appointments', AppointmentsController::class);
+
 // Маршруты для контроллера "Записи"
 // Route::get('/appointments', [AppointmentsController::class, 'index'])->name('appointments.index');
 // Route::get('/appointments/create', [AppointmentsController::class, 'create'])->name('appointments.create');

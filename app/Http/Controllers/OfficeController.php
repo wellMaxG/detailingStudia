@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
 class OfficeController extends Controller
@@ -9,14 +10,22 @@ class OfficeController extends Controller
     public function profile()
     {
         $user = auth()->user(); // Получение текущего аутентифицированного пользователя
-        return view('admin.users.office.profile', compact('user'));
+        return view('office_user.profile', compact('user'));
         
     }
+
 
     public function editProfile()
     {
         $user = auth()->user();
         return view('users.edit_profile', compact('user'));
+    }
+    public function show($id)
+    {
+        // Найдем клиента по его ID
+        $appointment = Appointment::findOrFail($id);
+      
+        return view('appointments.show', compact('appointment'));
     }
 
     // public function updateProfile(Request $request)

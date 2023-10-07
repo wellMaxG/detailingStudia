@@ -1,125 +1,105 @@
-<nav class="navbar navbar-expand-md bg-dark border-bottom border-info">
-   
-    <div class="container">       
+<nav class="navbar navbar-expand-md navbar-light bg-dark shadow-s border-bottom border-info">
 
-        <a href="{{ route('home.index') }}" class="navbar-brand text-white">
-        
+    <div class="container">
+        <a class="navbar-brand " href="{{ url('/home') }}">
             {{ config('app.name') }}
-    
         </a>
-     
-    <!-- Этот блок будет отображаться только для аутентифицированных пользователей -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    {{-- @if (Auth::check()) --}}
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
 
-      <div class="collapse navbar-collapse " id="navbar-collapse">
+                    <a href="{{ url('/') }}" class="nav-link text-white" aria-current="page">
+        
+                        {{ __('Главная') }}
+                    
+                    </a>
+        
+                </li>
 
-        <ul class="navbar-nav me-auto mb-2 mb-md-0 ">
+                <li class="nav-item">
 
-        <li class="nav-item ">
+                    <a href="{{ route('services.index') }}" class="nav-link text-white" aria-current="page">
+        
+                        {{ __('Услуги') }}
+                    
+                    </a>
+        
+                </li>
 
-            <a href="{{ route('home.index') }}" class="nav-link" aria-current="page">
+                <li class="nav-item">
+        
+                    <a href="{{ route('appointments.create') }}" class="nav-link text-white" aria-current="page">
+        
+                        {{ __('Записаться online') }}
+                    
+                    </a>
+        
+                </li>
 
-                {{ __('Главная') }}
-            
-            </a>
+            </ul>
 
-        </li>
+            <!-- Right Side Of Navbar -->
 
-        <li class="nav-item">
-
-            <a href="{{ route('services.index') }}" class="nav-link" aria-current="page">
-
-                {{ __('Услуги') }}
-            
-            </a>
-
-        </li>
-
-        <li class="nav-item">
-
-            <a href="{{ route('appointments.index') }}" class="nav-link" aria-current="page">
-
-                {{ __('Онлайн-запись') }}
-            
-            </a>
-
-        </li>
-
-        </ul>
-
-
-       
-
-        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
-
-            <li class="nav-item">
-    
-                <a href="{{ route('employees.index') }}" class="nav-link" aria-current="page">
-    
-                    {{ __('Сотрудники') }}
-                
-                </a>
-    
-            </li>
-    
-            <li class="nav-item">
-    
-                <a href="{{ route('users.index') }}" class="nav-link" aria-current="page">
-    
-                    {{ __('Клиенты') }}
-                
-                </a>
-    
-            </li>
-
-        </ul>
-
-           
-
-            <li class="nav-item">
-    
-                <a href="{{ route('office.profile') }}" class="nav-link" aria-current="page">
-    
-                    {{ __('Личный кабинет') }}
-                
-                </a>
-    
-            </li>
-
-        </ul>
-
-        </div>
-
-
-            {{-- @else --}}
-           
-                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
-
-                    <li class="nav-item">
-    
-                        <a href="{{ route('register.index') }}" aria-current="page">
-    
-                            {{ __('Регистрация') }}
-                
-                            </a>
-    
+                <ul class="navbar-nav ms-auto">              
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Вход') }}</a>
                         </li>
+                    @endif
 
-                    <li class="nav-item">
-    
-                <a href="{{ route('login.index') }}" aria-current="page">
-    
-            {{ __('Войти') }}
-                
-        </a>
-    
-    </li>
-    
-    </ul>
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="btn btn-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
 
-{{-- @endif    --}}
-    
-</div>
+                        <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+            
+                        <a href="{{ route('office.profile') }}" class="dropdown-item" aria-current="page">
+            
+                            {{ __('Личный кабинет') }}
+                        
+                        </a>
+                   
+                            <a class="dropdown-item" href="{{ route('logout') }}"
 
+                               onclick="event.preventDefault();
+                               
+                                             document.getElementById('logout-form').submit();">
+
+                                {{ __('Выход') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    
+                            <li class="nav-item">
+
+                            @if(auth()->user()->role === 'admin')
+
+                                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary ">Административная панель</a>
+
+                            </li>
+
+                            @endif
+                    </li>
+
+                @endguest
+       
+            </ul>
+        </div>
+    </div>
 </nav>
