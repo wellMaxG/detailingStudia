@@ -28,45 +28,46 @@
             @csrf
             
             
-
-        <div class="form-group">
-            <label for="client_name" class="required">Ваше имя:</label>
-            <input type="text" class="form-control" name="client_name" id="client_name" autofocus required>
-        </div>
-
-        <div class="form-group">
-            <label for="phone" class="required">Ваш телефон:</label>
-            <input type="text" class="form-control" name="phone" id="phone" required>
-        </div>
-
+            
+            <div class="form-group">
+                <label for="client_name" class="required">Ваше имя:</label>
+                <input type="text" class="form-control" name="client_name" id="client_name" autofocus required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone" class="required">Ваш телефон:</label>
+                <input type="text" class="form-control" name="phone" id="phone" required>
+            </div>
+            
             <div class="form-group">
                 <label for="service_id">Выберите услугу:</label>
                 <select class="form-control" name="service_id" id="service_id" required>
                     <option value="" disabled selected>Выберите услугу</option>
                     @foreach ($services as $service)
-                        <option value="{{ $service->id }}">{{ $service->name }} - {{ $service->price }}</option>
+                    <option value="{{ $service->id }}">{{ $service->name }} - {{ $service->price }}</option>
                     @endforeach
                 </select>
             </div>
-
+            
             <div class="form-group">
                 <label for="appointment_datetime">Выберите дату и время:</label>
                 <input type="datetime-local" name="appointment_datetime" id="appointment_datetime" class="form-control" required>        
             </div>
             
-
-        
-
+            
+            
+            
             <div class="form-group">
                 <label for="question">Ваш вопрос:</label>
                 <input type="text" class="form-control" name="question" id="question">
             </div>
-
+            
             <button type="submit" class="btn btn-primary">Записаться</button>
-            <a href="{{ url('/') }}" class="btn btn-secondary">Отмена</a> 
+            <a href="{{ route('home.index') }}" class="btn btn-secondary">Отмена</a> 
         </form>
         {{-- @endif --}}
     </div>
+    
     @endsection
 
 

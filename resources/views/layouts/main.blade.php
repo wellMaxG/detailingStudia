@@ -4,7 +4,7 @@
 
 <section>
     
-<x-container>
+    <x-container>
         
         @yield('main.content')
 

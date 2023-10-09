@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,9 @@ use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\ServicesController;
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
-Route::get('/', function () { return view('home.index'); });
+// Route::get('/', function () { return view('home.index'); });
 
 
 

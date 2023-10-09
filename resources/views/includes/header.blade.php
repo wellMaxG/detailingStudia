@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-s border-bottom border-info">
 
     <div class="container">
-        <a class="navbar-brand " href="{{ url('/') }}">
+        <a class="navbar-brand " href="{{ route('home.index') }}">
             {{ config('app.name') }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -13,7 +13,7 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
 
-                    <a href="{{ url('/') }}" class="nav-link text-white" aria-current="page">
+                    <a href="{{ route('home.index') }}" class="nav-link text-white" aria-current="page">
         
                         {{ __('Главная') }}
                     

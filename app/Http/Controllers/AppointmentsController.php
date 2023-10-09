@@ -18,8 +18,6 @@ class AppointmentsController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-       
-
         // Валидация данных
         $validatedData = $request->validate([
         'client_name' => 'required|string',
@@ -30,22 +28,15 @@ class AppointmentsController extends Controller
         'user_id' => 'nullable|string',
     ]);
     if (!$user) {
-        $validatedData['user_id'] = 999;
+        $validatedData['user_id'] = 1;
         } else {
         $validatedData['user_id'] = $user->id;
         }
-        
-        
-    //     $appointment = new Appointment([
-    //     // 'user_id' => $user->id,
-    //     // 'user_id' => $user ? $user->id : null,
-    //     // 'is_registered' => $isRegistered,
-    // ]);
     
         Appointment::create($validatedData);
 
 
-        return redirect()->route('home')->with('success', 'Вы успешно записались на услугу!');
+        return redirect()->route('home.index')->with('success', 'Вы успешно записались на услугу!');
     }
 
     public function show($id)

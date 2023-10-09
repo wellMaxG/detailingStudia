@@ -5,7 +5,7 @@
 <div class="text-center">
     
     <x-span-success />
-
+    
     <h1>
 
         Главная страница

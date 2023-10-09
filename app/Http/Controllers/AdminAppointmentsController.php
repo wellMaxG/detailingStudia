@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Service;
-
+use Illuminate\Support\Facades\Auth;
 
 class AdminAppointmentsController extends Controller
 {
@@ -24,6 +24,7 @@ class AdminAppointmentsController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
         // Валидация данных
         $validatedData = $request->validate([
         'client_name' => 'required|string',
@@ -32,8 +33,13 @@ class AdminAppointmentsController extends Controller
         'appointment_datetime' => 'required|date',
         'status' => 'required|string',
         'question' => 'string',
-
+        'user_id' => 'nullable|string',
     ]);
+    if (!$user) {
+        $validatedData['user_id'] = 999;
+        } else {
+        $validatedData['user_id'] = $user->id;
+        }
     
         Appointment::create($validatedData);
     

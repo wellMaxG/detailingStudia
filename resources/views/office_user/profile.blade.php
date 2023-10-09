@@ -16,7 +16,7 @@
         
         <p>ID: {{ $user->id }}</p>
 
-        <x-span-bt-create href="{{ route('home') }}">Назад</x-span-bt-create>
+        <x-span-bt-create href="{{ route('home.index') }}">На главную</x-span-bt-create>
 
     </div>
 
