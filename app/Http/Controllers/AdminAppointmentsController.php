@@ -27,16 +27,17 @@ class AdminAppointmentsController extends Controller
         $user = Auth::user();
         // Валидация данных
         $validatedData = $request->validate([
-        'client_name' => 'required|string',
-        'phone' => 'required|string',
-        'service_id' => 'required|exists:services,id',
-        'appointment_datetime' => 'required|date',
-        'status' => 'required|string',
-        'question' => 'string',
-        'user_id' => 'nullable|string',
+            'client_name' => ['required', 'string', 'max:100', 'regex:/^[^0-9].*$/'],
+            'phone' => ['required', 'string','min:11', 'max:12'],
+            'service_id' => ['required', 'exists:services,id'],
+            'appointment_date' => ['required', 'date', 'after_or_equal:today'],
+            'appointment_time' => ['required', 'date_format:H:i', 'after:10:00', 'before:22:00'],
+            'status' => ['required', 'string'],
+            'question'=> ['nullable','string','max:200'],
+            'user_id'=> ['nullable', 'string'],
     ]);
     if (!$user) {
-        $validatedData['user_id'] = 999;
+        $validatedData['user_id'] = 1;
         } else {
         $validatedData['user_id'] = $user->id;
         }
@@ -64,11 +65,14 @@ class AdminAppointmentsController extends Controller
     {
         // Валидация данных, пример:
         $validatedData = $request->validate([
-            'client_name' => 'required|string',
-            'phone' => 'required|string',
-            'service_id' => 'required|exists:services,id',
-            'appointment_datetime' => 'required|date',
-            'status' => 'required|string',
+            'client_name' => ['required', 'string', 'max:100', 'regex:/^[^0-9].*$/'],
+            'phone' => ['required', 'string','min:11', 'max:12'],
+            'service_id' => ['required', 'exists:services,id'],
+            'appointment_date' => ['required', 'date', 'after_or_equal:today'],
+            'appointment_time' => ['required', 'after:10:00', 'before:22:00'],
+            'status' => ['required', 'string'],
+            'question'=> ['nullable','string','max:200'],
+            'user_id'=> ['nullable', 'string'],
         ]);
         
         // Обновляем данные записи на услугу

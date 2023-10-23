@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
+@section('page.title','Административная панель')
+
 @section('content')
+
+<x-alert-success />
 
     <div class="container">
         
@@ -10,15 +14,15 @@
 
             <div class="col-12 col-md-3">
 
-                <div class="card mb-3">
+                <div class="card text-white dashboard-card mb-3">
 
-                    <div class="card-header p-1">
+                    <div class="card-header p-1" >
 
                         <div class="d-flex">
                             
                             <div class="p-1"><img class="icon" src="{{ asset('img/clients.png') }}" alt="Клиенты"></div>
                             
-                            <div class="p-1 mt-1">{{ __('Клиенты') }}</div>
+                            <div class="p-1 mt-1" >{{ __('Клиенты') }}</div>
                           
                         </div>
 
@@ -27,8 +31,9 @@
                     <div class="card-body">
 
                         <p class="card-text">{{ __('Список клиентов с возможностью добавление, редактирования, удаления.') }}</p>
+                        
 
-                        <x-span-bt-edit href="{{ route('user.index') }}">{{ __('Подробнее...') }}</x-span-bt-edit>
+                        <x-btn-black class="btn-outline-primary" href="{{ route('user.index') }}">{{ __('Подробнее...') }}</x-btn-black>
 
                     </div>
 
@@ -38,7 +43,7 @@
 
             <div class="col-12 col-md-3">
 
-                <div class="card mb-2">
+                <div class="card text-white dashboard-card mb-2">
 
                     <div class="card-header p-1">
 
@@ -54,9 +59,11 @@
 
                     <div class="card-body">      
 
-                        <p class="card-text">{{ __('Список сотрудников с возможностью добавление, редактирования, удаления.') }}</p>
+                        <p class="card-text" >{{ __('Список сотрудников с возможностью добавление, редактирования, удаления.') }}</p>
 
-                        <x-span-bt-edit href="{{ route('employee.index') }}">{{ __('Подробнее...') }}</x-span-bt-edit>
+
+
+                        <x-btn-black class="btn-outline-primary" href="{{ route('employee.index') }}">{{ __('Подробнее...') }}</x-btn-black>
 
                     </div>
 
@@ -67,7 +74,7 @@
             
             <div class="col-12 col-md-3">
 
-                <div class="card mb-3">
+                <div class="card text-white dashboard-card mb-2">
 
                     <div class="card-header p-1">
 
@@ -84,7 +91,7 @@
 
                         <p class="card-text">{{ __('Перечень услуг с возможностью добавление, редактирования, удаления.') }}</p>
 
-                        <x-span-bt-edit href="{{ route('service.index') }}" class="btn btn-primary">{{ __('Подробнее...') }}</x-span-bt-edit>
+                        <x-btn-black class="btn-outline-primary" href="{{ route('service.index') }}">{{ __('Подробнее...') }}</x-btn-black>
 
                     </div>
 
@@ -94,7 +101,7 @@
 
             <div class="col-12 col-md-3">
 
-                <div class="card mb-3">
+                <div class="card text-white dashboard-card mb-3">
 
                     <div class="card-header p-1">
 
@@ -111,7 +118,7 @@
 
                         <p class="card-text">{{ __('Перечень записей с возможностью добавление, редактирования, удаления.') }}</p>
 
-                        <x-span-bt-edit href="{{ route('appointment.index') }}" class="btn btn-primary">{{ __('Подробнее...') }}</x-span-bt-edit>
+                        <x-btn-black class="btn-outline-primary" href="{{ route('appointment.index') }}">{{ __('Подробнее...') }}</x-btn-black>
                     </div>
 
                 </div>

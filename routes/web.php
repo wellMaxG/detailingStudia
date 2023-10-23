@@ -15,15 +15,18 @@ use App\Http\Controllers\OfficeController;
 
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\ServicesController;
-
+use App\Http\Controllers\UserController;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+
 
 // Route::get('/', function () { return view('home.index'); });
 
 
 
 Route::get('/profile', [OfficeController::class, 'profile'])->name('office.profile');
+Route::post('avatar', [UserController::class, 'uploadAvatar'])->name('avatar.upload');
+
 //     Route::get('/profile/edit', [OfficeController::class, 'editProfile'])->name('office.editProfile');
 //     Route::put('/profile/update', [OfficeController::class, 'updateProfile'])->name('office.updateProfile');
 
@@ -31,11 +34,13 @@ Route::get('/profile', [OfficeController::class, 'profile'])->name('office.profi
 //__________________Маршруты, доступные только для гостя__________________\\
 Auth::routes();
 Route::resource('services', ServicesController::class);
+Route::get('/services/{service}',[ServicesController::class, 'show'])->name('services.show');
 Route::resource('appointments', AppointmentsController::class);
 
 //__________________Маршруты, доступные только для администраторов__________________\\
 Route::middleware(['admin'])->group(function () {
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
 
 //__________________Маршруты для контроллера "Клиенты"__________________\\
 Route::get('admin/users', [AdminUsersController::class, 'index'])->name('user.index');
@@ -66,6 +71,8 @@ Route::get('admin/services/{service}/edit',[AdminServicesController::class, 'edi
 Route::put('admin/services/{service}', [AdminServicesController::class, 'update'])->name('service.update');
 Route::get('admin/services/delete/{id}', [AdminServicesController::class, 'destroy']);
 Route::delete('admin/services/delete/{service}', [AdminServicesController::class, 'delete'])->name('service.delete');
+
+Route::post('admin/avatar', [AdminServicesController::class, 'uploadAvatar'])->name('serviceAvatar.upload');
 
 //__________________Маршруты для контроллера "Записи"__________________\\
 Route::get('admin/appointments', [AdminAppointmentsController::class, 'index'])->name('appointment.index');

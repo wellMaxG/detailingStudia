@@ -13,6 +13,32 @@ class UserController extends Controller
         return view('index', compact('users'));
     }
 
+    public function showAvatarForm()
+{
+    return view('avatar');
+}
+
+public function uploadAvatar(Request $request)
+{
+    $request->validate([
+        'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $user = auth()->user();
+
+    if ($request->hasFile('avatar')) {
+        $avatar = $request->file('avatar');
+        $imageName = time() . '.' . $avatar->getClientOriginalExtension();
+        $avatar->move(public_path('avatars'), $imageName);
+
+        $user->avatar = '/avatars/' . $imageName;
+        $user->save();
+    }
+
+    return back()->with('success', 'Аватар успешно загружен.');
+}
+
+
     // public function create()
     // {
     //     return view('admin.users.create');

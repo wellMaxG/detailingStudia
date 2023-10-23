@@ -6,7 +6,8 @@
 
     <x-validation-errors />
 
-    <form action="{{ route('service.update', $service->id) }}" method="POST">
+    <form action="{{ route('service.update', $service->id) }}" method="POST" enctype="multipart/form-data">
+  
         @csrf
         @method('PUT')
 
@@ -28,6 +29,10 @@
         <div class="form-group">
             <label for="duration_minutes">Длительность</label>
             <input type="text" class="form-control" name="duration_minutes" id="duration_minutes" value="{{ old('duration_minutes', $service->duration_minutes) }}">
+        </div>
+        <div class="form-group">
+            <label for="image_url">Изображение:</label>
+            <input type="file" name="image_url" id="image_url" class="form-control" value="{{ $service->image_url }}">
         </div>
 
         <button type="submit" class="btn btn-primary">Сохранить изменения</button>

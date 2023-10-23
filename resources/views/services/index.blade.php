@@ -1,57 +1,30 @@
 @extends('layouts.app')
 
-@section('page.title','Страница услуг')
+@section('page.title', 'Страница услуг')
 
 @section('content')
 
-<x-span-success />
-
-    <h1 class="h">Список услуг</h1>
-
-    <x-table>
-
-        <thead>
-
-            <tr>
-
-                <th>Название</th>
-                <th>Описание</th>
-                <th>Стоимость</th>
-                <th>Длительность</th>
-                <th>Действия</th>
-                
-            </tr>
-
-        </thead>
-
-    <tbody>
-
+<x-alert-success />
+  <h1 class="my-4 mb-3">{{ __('Новая жизнь Вашего автомобиля в наших услугах') }}</h1>
+    <div class="container">
+        <div class="row">
             @foreach ($services as $service)
-
-                <tr>
-
-                    <td>{{ $service->name }}</td>
-                    <td>{{ $service->description }}</td>
-                    <td>{{ $service->price }}</td>
-                    <td>{{ $service->duration_minutes }}</td>
-
-                    <td>
-
-                        <x-span-bt-show href="{{ route('services.show', $service->id) }}">Подробнее...</x-span-bt-show>
-
-                        <x-bt-success href="{{ route('services.show', $service->id) }}">Записаться</x-bt-success>
-
-
-                    </td>
-
-                </tr>
-
-            @endforeach
-
-        </tbody>
-
-    </x-table>
-
-    <x-span-bt-create href="{{ url('/home') }}">На главную</x-span-bt-create>
-    
+                <div class="col-12 col-md-3 mb-3 my-3">
+                    <a class="service-card-animation" href="{{ route('services.show', $service->id) }}">
+                        <div class="service-card" style="background-image: url('{{ asset($service->image_url) }}')">
+                            <div class="service-tint-card-bg">
+                                <div class="service-card-body">
+                                    <div class="service-card-header">
+                                  <h4 class="service-card-title">{{ $service->name }}</h4>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                </div>
+              <div class="service-card-footer">
+              <x-btn-black href="{{ route('appointments.create') }}">{{ __('Записаться') }}</x-btn-black>
+          </div>
+      </div>
+    @endforeach
+  </div>
 @endsection

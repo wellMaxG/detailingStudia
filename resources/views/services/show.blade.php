@@ -1,48 +1,30 @@
 @extends('layouts.app')
 
+@section('page.title', 'Информация о услуге')
+
 @section('content')
 
-<div class="container">
+<x-container-6>
+    <x-form-card>
+        <x-form-card-header>
+            <x-form-card-title>
+                {{ __('Информация о услуге:') }}
+            </x-form-card-title>
+        </x-form-card-header>
 
-    <h1>Подробности</h1>
+            <x-form-card-body>
 
-    <div class="card">
+                <p>{{ $service->description }}</p>
 
-        <div class="card-header">
-    
-            {{__('Информация о услуге:')}}
-    
-        </div>
+                <p>Стоимость: <strong>{{ $service->price }} ₽</strong></p>
 
+                <p>Длительность: <strong>{{ $service->duration_minutes }}</strong></p>
 
-    <div class="card-body">
+                <x-btn-black href="{{ route('appointments.create') }}">{{ __('Записаться') }}</x-btn-black>
 
-    <p><strong>Название:</strong> {{ $service->name }}</p>
+                <x-btn-black href="{{ route('services.index') }}">{{ __('Назад к списку услуг') }}</x-btn-black>
 
-    <p><strong>Описание:</strong> {{ $service->description }}</p>
-
-    <p><strong>Стоимость:</strong> {{ $service->price }}₽</p>
-
-    <p><strong>Длительность:</strong> {{ $service->duration_minutes }}</p>
-
-    <a href="{{ route('services.index') }}" class="btn btn-primary">Назад к списку услуг</a>
-
-    
-</div>
-                
-</div>
-
-</div>
-
+            </x-form-card-body>
+        </x-form-card>
+    </x-container-6>
 @endsection
-
-
-        
-
-            
-              
-            
-                  
-            
-
-            

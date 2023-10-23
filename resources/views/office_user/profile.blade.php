@@ -2,7 +2,7 @@
 
 @section('content')
 
-<x-span-success />
+<x-alert-success />
 
     <div class="container">
 
@@ -16,9 +16,17 @@
         
         <p>ID: {{ $user->id }}</p>
 
-        <x-span-bt-create href="{{ route('home.index') }}">На главную</x-span-bt-create>
+        <x-bt-on-head href="{{ route('home.index') }}">На главную</x-bt-on-head>
 
     </div>
+
+    <form action="{{ route('avatar.upload') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" class="form-control" name="avatar">
+        <button type="submit" class="btn btn-primary">Загрузить аватар</button>
+        </form>
+    
+    <img src="{{ asset(auth()->user()->avatar) }}" alt="Аватар пользователя">
 
     <h2>Ваши записи на услуги:</h2>
 

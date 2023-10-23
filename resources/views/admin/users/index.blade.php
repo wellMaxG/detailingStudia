@@ -2,7 +2,7 @@
 
 @section('content')
 
-<x-span-success />
+<x-alert-success />
 
     <h1>Список клиентов</h1>
 
@@ -35,7 +35,7 @@
 
                         <x-span-bt-edit href="{{ route('user.edit', $user->id) }}">Редактировать</x-span-bt-edit>
 
-                        <x-span-bt-show href="{{ route('user.show', $user->id) }}">Просмотреть</x-span-bt-show>
+                        <x-bt-show href="{{ route('user.show', $user->id) }}">Просмотреть</x-bt-show>
 
                         <x-span-bt-delete href="{{ route('user.delete', $user->id) }}">Удалить</x-span-bt-delete>
 

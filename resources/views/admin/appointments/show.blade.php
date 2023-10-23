@@ -1,39 +1,35 @@
 @extends('layouts.app')
 
+@section('page.title', 'Информация о клиенте')
+
 @section('content')
 
-    <div class="container">
+<x-container-6>
+    <x-form-card>
+        <x-form-card-header>
+            <x-form-card-title>
+                {{ __('Информация о записе:') }}
+            </x-form-card-title>
+                </x-form-card-header>
 
-        <h1>Подробности</h1>
+                    <x-form-card-body>
 
-            <div class="card">
+                    <p>Имя клиента: <strong>{{ $appointment->client_name }}</strong></p>
+                    
+                    <p>Телефон клиента: <strong>{{ $appointment->phone }}</strong></p>
+                    
+                    <p>Услуга: <strong>{{ $appointment->service->name }}</strong></p>
+                    
+                    <p>Время и дата записи: <strong>{{ $appointment->appointment_date }} {{ $appointment->appointment_time }}</strong></p>
+                    
+                    <p>Статус выполнения: <strong>{{ $appointment->status }}</strong></p>
 
-                <div class="card-header">
-            
-                    {{__('Информация о записе:')}}
-            
-                </div>
-            
-                <div class="card-body">
-                    
-                    <p><strong>Имя клиента:</strong> {{ $appointment->client_name }}</p>
-                    
-                    <p><strong>Телефон клиента:</strong> {{ $appointment->phone }}</p>
-                    
-                    <p><strong>Услуга:</strong> {{ $appointment->service->name }}</p>
-                    
-                    <p><strong>Время и дата записи:</strong> {{ $appointment->appointment_datetime }}</p>
-                    
-                    <p><strong>Статус выполнения:</strong> {{ $appointment->status }}</p>
-
-                    <a href="{{ route('appointment.index') }}" class="btn btn-primary">Назад к списку записей</a>
-            
-                </div>
-                
-            </div>
-    
-        </div>
-
+                            <x-btn-black class="btn-outline-primary" href="{{ route('appointment.edit', $appointment->id) }}">Редактировать</x-btn-black>
+                        <x-btn-black class="btn-outline-danger" href="{{ route('appointment.delete', $appointment->id) }}">Удалить</x-btn-black>
+                    <x-btn-black href="{{ route('appointment.index') }}" class="btn btn-primary">Назад к списку записей</x-btn-black>
+                </x-form-card-body>
+        </x-form-card>
+    </x-container-6>
 @endsection
 
 

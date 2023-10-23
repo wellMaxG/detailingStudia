@@ -2,10 +2,11 @@
 
 @error($name)
     
-<span class="invalid-feedback" role="alert">
-            
+{{-- <div class="invalid-feedback" role="alert"> --}}
+    <div class="small text-danger text-start pt-1">        
+
     <strong>{{ $message }}</strong>
     
-</span>
+</div>
 
 @enderror

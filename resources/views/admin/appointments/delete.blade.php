@@ -1,17 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Удаление записи</h1>
 
-        <p>Вы уверены, что хотите удалить запись "{{ $appointment->service->name }}" для клиента {{ $appointment->client_name }}?</p>
+<x-container-6>
+    <x-form-card>
+        <x-form-card-header>
+            <x-form-card-title>
+                {{ __('Удаление записи') }}
+            </x-form-card-title>
+                </x-form-card-header>
+                
+                    <x-form-card-body>
 
-        <form method="POST" action="{{ route('appointment.delete', $appointment->id) }}">
-            @csrf
-            @method('DELETE')
+                        <p>Вы уверены, что хотите удалить запись "{{ $appointment->service->name }}" для клиента {{ $appointment->client_name }}?</p>
+                        <x-form action="{{ route('appointment.delete', $appointment->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <x-btn-black-submit class="btn-outline-danger">Удалить</x-btn-black-submit>
+                            <x-btn-black href="{{ route('appointment.index') }}">Отмена</x-btn-black>
+                        </x-form>
 
-            <button type="submit" class="btn btn-danger">Удалить</button>
-            <a href="{{ route('appointment.index') }}" class="btn btn-secondary">Отмена</a>
-        </form>
-    </div>
+                </x-form-card-body>
+        </x-form-card>
+    </x-container-6>
 @endsection

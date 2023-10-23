@@ -25,6 +25,9 @@
 
     <p><strong>Длительность:</strong> {{ $service->duration_minutes }}</p>
 
+    <p><strong>Фото:</strong><img src="{{ $service->image_url }}" alt=""></p>
+    
+
     <a href="{{ route('service.index') }}" class="btn btn-primary">Назад к списку услуг</a>
 
     

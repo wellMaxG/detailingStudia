@@ -1,7 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-light bg-dark shadow-s border-bottom border-info">
+{{-- <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-s border-bottom border-info"> --}}
+
+        <nav class="navbar sticky-top navbar-expand-md bg-dark scrolling-navbar" data-bs-theme="dark">
 
     <div class="container">
-        <a class="navbar-brand " href="{{ route('home.index') }}">
+        <a class="navbar-brand" href="{{ route('home.index') }}">
             {{ config('app.name') }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -13,7 +15,7 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
 
-                    <a href="{{ route('home.index') }}" class="nav-link text-white" aria-current="page">
+                    <a href="{{ route('home.index') }}" class="nav-link  {{--{{ active_link('home.index') }}--}}" aria-current="page"> 
         
                         {{ __('Главная') }}
                     
@@ -23,7 +25,7 @@
 
                 <li class="nav-item">
 
-                    <a href="{{ route('services.index') }}" class="nav-link text-white" aria-current="page">
+                    <a href="{{ route('services.index') }}" class="nav-link {{--{{ active_link('home.index') }}--}}" aria-current="page">
         
                         {{ __('Услуги') }}
                     
@@ -33,7 +35,7 @@
 
                 <li class="nav-item">
         
-                    <a href="{{ route('appointments.create') }}" class="nav-link text-white" aria-current="page">
+                    <a href="{{ route('appointments.create') }}" class="nav-link" aria-current="page">
         
                         {{ __('Записаться online') }}
                     
@@ -49,13 +51,13 @@
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Вход') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Вход') }}</a>
                         </li>
                     @endif
 
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                         </li>
                     @endif
                 @else

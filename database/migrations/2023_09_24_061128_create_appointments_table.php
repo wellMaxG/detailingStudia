@@ -13,7 +13,8 @@ class CreateAppointmentsTable extends Migration
                     $table->string('phone')->nullable();
                     $table->string('question');
                     $table->unsignedBigInteger('service_id');
-                    $table->datetime('appointment_datetime');
+                    $table->date('appointment_date');
+                    $table->time('appointment_time');
                     $table->string('status');
                     $table->timestamps();
             

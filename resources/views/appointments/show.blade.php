@@ -1,20 +1,22 @@
 @extends('layouts.app')
 
+@section('page.title', 'Запись на услугу')
+
 @section('content')
 
-    <div class="container">
+    <x-container-6>
 
-        <h1>Подробности</h1>
+        <h1 class="my-3 mb-3">{{ __('Подробности') }}</h1>
 
-            <div class="card">
+            <div class="card text-bg-dark">
 
-                <div class="card-header">
+                <div class="card-header card-header bg-transparent border-warning">
             
                     {{__('Информация о записе:')}}
             
                 </div>
             
-                <div class="card-body">
+                <div class="card-body text-start">
                     
                     <p><strong>Имя клиента:</strong> {{ $appointment->client_name }}</p>
                     
@@ -30,7 +32,7 @@
                 
             </div>
     
-        </div>
+        </x-container-6>
 
 @endsection
 

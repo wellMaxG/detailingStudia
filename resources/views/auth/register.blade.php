@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" data-bs-theme="dark">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -64,9 +64,8 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Регистрация') }}
-                                </button>
+                                <x-btn-black-submit>{{ __('Регистрация') }}</x-btn-black-submit>
+                                
                             </div>
                         </div>
                     </form>

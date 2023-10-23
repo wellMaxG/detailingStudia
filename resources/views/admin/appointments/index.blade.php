@@ -1,19 +1,28 @@
 @extends('layouts.app')
 
+@section('page.title', 'Страница записей на услуги')
+
 @section('content')
 
-<x-span-success />
+    <x-container>
+        <x-form-card>
+            <x-alert-success />
 
-    <h1>Список записей на услуги</h1>
+            <x-form-card-header>
+                <x-form-card-title>
+                    {{ __('Запись клиента на услугу') }}
+                </x-form-card-title>
+            </x-form-card-header>
 
-    <x-span-bt-create href="{{ route('appointment.create') }}">Добавить запись</x-span-bt-create>
+            <x-form-card-header class="text-end">
+                <x-btn-black class="btn-outline-success" href="{{ route('appointment.create') }}">Добавить запись</x-btn-black>
+                <x-btn-black href="{{ route('admin.dashboard') }}">Назад</x-btn-black>
+            </x-form-card-header>
 
+<x-table-responsive>
     <x-table>
-
         <thead>
-
             <tr>
-                <th>ID</th>
                 <th>Клиент</th>
                 <th>Услуга</th>
                 <th>Телефон</th>
@@ -22,41 +31,27 @@
                 <th>Вопрос клиента</th>
                 <th>Действия</th>
             </tr>
-
         </thead>
 
         <tbody>
-
             @foreach ($appointments as $appointment)
-
-                <tr>
-                    <td>{{ $appointment->id }}</td>
-                    <td>{{ $appointment->client_name }}</td>
+                <tr>                   
+                    <td>{{ $appointment->client_name }} </td>
                     <td>{{ $appointment->service->name }}</td>
                     <td>{{ $appointment->phone }}</td>
-                    <td>{{ $appointment->appointment_datetime }}</td>
+                    <td>{{ $appointment->appointment_date }} {{ $appointment->appointment_time}}</td>
                     <td>{{ $appointment->status }}</td>
                     <td>{{ $appointment-> question }}</td>
                     <td>
-
-                        <x-span-bt-edit href="{{ route('appointment.edit', $appointment->id) }}">Редактировать</x-span-bt-edit>
-
-                        <x-span-bt-show href="{{ route('appointment.show', $appointment->id) }}">Просмотреть</x-span-bt-show>
-
-                        <x-span-bt-delete href="{{ route('appointment.delete', $appointment->id) }}">Удалить</x-span-bt-delete>
-
+                        <x-btn-black class="btn-outline-success btn-sm" href="{{ route('appointment.show', $appointment->id) }}">{{ __('подробнее...') }}</x-btn-black>
                     </td>
-
                 </tr>
-
             @endforeach
-
-        </tbody>
-
-    </x-table>
-
-    <x-span-bt-create href="{{ route('admin.dashboard') }}">Назад</x-span-bt-create>
-
+                    </tbody>
+                </x-table>
+            </x-table-responsive>
+        </x-form-card>
+    </x-container>
 @endsection
 
 

@@ -6,7 +6,7 @@
 
     <x-validation-errors />
 
-    <form action="{{ route('service.store') }}" method="POST">
+    <form action="{{ route('service.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <label for="description">Описание</label>
-            <input type="text" class="form-control" name="description" id="description" value="{{ old('description') }}">
+            <textarea type="text" class="form-control" name="description" id="description" rows="5" value="{{ old('description') }}"></textarea>
         </div>
         
         <div class="form-group">
@@ -28,9 +28,12 @@
             <label for="duration_minutes">Длительность</label>
             <input type="text" class="form-control" name="duration_minutes" id="duration_minutes" value="{{ old('duration_minutes') }}">
         </div>
+        
 
         <button type="submit" class="btn btn-primary">Создать услугу</button>
         
         <a href="{{ route('service.index') }}" class="btn btn-secondary">Отмена</a>
+
     </form>
+    
 @endsection

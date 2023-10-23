@@ -11,18 +11,18 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="d-flex flex-column justify-content-between min-vh-100 bg-dark text-white" id="app">
+    
+
+    <div class="d-flex flex-column justify-content-between min-vh-100 text-white" id="app">
         
         @include('includes.header')
         
         <main> 
-    
-            <div class="flex-grow-1 py-3">
             
-            @yield('content')
-            
-            </div>
-            
+            @yield('content')     
+
+            @include('includes.buttonTop')
+        
         </main>
 
         @include('includes.footer')

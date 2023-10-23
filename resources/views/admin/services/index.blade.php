@@ -2,11 +2,11 @@
 
 @section('content')
 
-<x-span-success />
+<x-alert-success />
 
     <h1>Список услуг</h1>
 
-    <x-span-bt-create href="{{ route('service.create') }}">Добавить услугу</x-span-bt-create>
+    <x-btn-black href="{{ route('service.create') }}">Добавить услугу</x-btn-black>
 
     <x-table>
 
@@ -39,11 +39,11 @@
 
                     <td>
 
-                        <x-span-bt-edit href="{{ route('service.edit', $service->id) }}">Редактировать</x-span-bt-edit>
+                        <x-btn-edit href="{{ route('service.edit', $service->id) }}">Редактировать</x-btn-edit>
 
-                        <x-span-bt-show href="{{ route('service.show', $service->id) }}">Просмотреть</x-span-bt-show>
+                        <x-btn-show href="{{ route('service.show', $service->id) }}">Просмотреть</x-btn-show>
 
-                        <x-span-bt-delete href="{{ route('service.delete', $service->id) }}">Удалить</x-span-bt-delete>
+                        <x-btn-delete href="{{ route('service.delete', $service->id) }}">Удалить</x-btn-delete>
 
                     </td>
 
@@ -55,6 +55,6 @@
 
     </x-table>
 
-    <x-span-bt-create href="{{ route('admin.dashboard') }}">Назад</x-span-bt-create>
+    <x-btn-black href="{{ route('admin.dashboard') }}">Назад</x-btn-black>
     
 @endsection
