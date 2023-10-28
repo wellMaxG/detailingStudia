@@ -1,38 +1,30 @@
 @extends('layouts.app')
-
+@section('page.title', 'Информация о сотруднике')
 @section('content')
 
-    <div class="container">
+<x-container-6>
+    <x-form-card>
 
-        <h1>Подробности</h1>
+        <x-form-card-header>
+            <x-form-card-title>
+                {{ __('Информация о сотруднике:') }}
+            </x-form-card-title>
+                </x-form-card-header>
 
-            <div class="card">
+                <x-form-card-body>
 
-                <div class="card-header">
-            
-                    {{__('Информация о сотруднике:')}}
-            
-                </div>
-            
-                <div class="card-body">
-            
-                    {{-- <p><strong>ID:</strong> {{ $employee->id }}</p> --}}
-            
-                    <p><strong>Имя:</strong> {{ $employee->name }}</p>
-            
-                    <p><strong>Телефон:</strong> {{ $employee->phone }}</p>
-            
-                    <p><strong>Специализация:</strong> {{ $employee->specialization }}</p>
-            
-                    <a href="{{ route('employee.index') }}" class="btn btn-primary">Назад к списку сотрудников</a>
-                    
-                </div>
-                
-            </div>
-            
+                    <p>Имя сотрудника: <strong>{{ $employee->name }}</strong></p>
 
-        </div>
+                    <p>Телефон сотрудника: <strong>{{ $employee->phone }}</strong></p>
 
+                    <p>Должность: <strong>{{ $employee->specialization }}</strong></p>
+            
+                        <x-btn-black class="btn-outline-primary" href="{{ route('employee.edit', $employee->id) }}">{{ __('Редактировать') }}</x-btn-black>
+                    <x-btn-black class="btn-outline-danger" href="{{ route('employee.delete', $employee->id) }}">{{ __('Удалить') }}</x-btn-black>
+                <x-btn-black href="{{ route('employee.index') }}" class="btn btn-primary">{{ __('Назад к списку записей') }}</x-btn-black>
+            </x-form-card-body>
+    </x-form-card>
+</x-container-6>
 @endsection
 
 

@@ -24,11 +24,12 @@ class AdminUsersController extends Controller
     {
         // Валидация данных, пример:
         $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'phone' => 'nullable|string',
-            'password' => 'required|string',
+            'name' => ['required', 'string', 'max:255', 'regex:/^[^0-9].*$/'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'max:16','min:11','unique:users', 'regex:/^\d{1,3} \(\d{3}\) \d{3}-\d{4}$/'],
+            'password' => ['required', 'string', 'min:4',],
         ]);
+        
 
         // Создаем нового клиента в базе данных
         User::create($validatedData);
@@ -56,10 +57,10 @@ class AdminUsersController extends Controller
     {
         // Валидация данных, пример:
         $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users,email,' . $user->id, // Исключаем текущего клиента по ID
-            'phone' => 'nullable|string',
-            'password' => 'required|string',
+            'name' => ['required', 'string', 'max:255', 'regex:/^[^0-9].*$/'],
+            'email' => ['required', 'string', 'email', 'max:255', ],
+            'phone' => ['required', 'string', 'max:16','min:11', 'regex:/^\d{1,3} \(\d{3}\) \d{3}-\d{4}$/'],
+
         ]);
 
         // Обновляем данные клиента

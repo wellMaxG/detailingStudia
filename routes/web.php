@@ -18,18 +18,14 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\UserController;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
 
-// Route::get('/', function () { return view('home.index'); });
-
-
-
+//__________________Маршруты, для личного кабинета пользователя__________________\\
 Route::get('/profile', [OfficeController::class, 'profile'])->name('office.profile');
 Route::post('avatar', [UserController::class, 'uploadAvatar'])->name('avatar.upload');
-
-//     Route::get('/profile/edit', [OfficeController::class, 'editProfile'])->name('office.editProfile');
-//     Route::put('/profile/update', [OfficeController::class, 'updateProfile'])->name('office.updateProfile');
-
+Route::get('/profile/edit', [OfficeController::class, 'editProfile'])->name('office.editProfile');
+Route::put('/profile/update', [OfficeController::class, 'updateProfile'])->name('office.updateProfile');
 
 //__________________Маршруты, доступные только для гостя__________________\\
 Auth::routes();
@@ -40,7 +36,6 @@ Route::resource('appointments', AppointmentsController::class);
 //__________________Маршруты, доступные только для администраторов__________________\\
 Route::middleware(['admin'])->group(function () {
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-
 
 //__________________Маршруты для контроллера "Клиенты"__________________\\
 Route::get('admin/users', [AdminUsersController::class, 'index'])->name('user.index');

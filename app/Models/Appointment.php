@@ -32,5 +32,14 @@ class Appointment extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function scopeOrderByDate($query)
+    {
+        return $query->orderBy('appointment_date', 'asc');
+    }
+    public function scopeNextRecords($query)
+{
+    return $query->where('appointment_date', '>=', Today())->orderBy('appointment_date', 'asc');
+}
+
 }
 

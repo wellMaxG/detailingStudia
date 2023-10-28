@@ -179,6 +179,9 @@ return [
         'appointment_date' => 'дата',
         'appointment_time' => 'время',
         'service_id' => 'услуга',
+        'price' => 'стоимость',
+        'duration_minutes' => 'длительность услуги',
+        'description' => 'описание услуги',
         
 
         

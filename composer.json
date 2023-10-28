@@ -31,10 +31,14 @@
     },
 
     "files": [
-        
-        "app/helpers.php"
+        "app/Helpers.php"
     ]
 },
+
+  
+   
+
+
 
     "autoload-dev": {
         "psr-4": {

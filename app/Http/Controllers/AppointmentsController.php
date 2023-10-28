@@ -29,7 +29,7 @@ class AppointmentsController extends Controller
         $user = Auth::user();
         $validatedData = $request->validate([
             'client_name' => ['required', 'string', 'max:100', 'regex:/^[^0-9].*$/'],
-            'phone' => ['required', 'string','min:11', 'max:12'],
+            'phone' => ['required', 'string','min:11', 'max:16'],
             'service_id' => ['required', 'exists:services,id'],
             'appointment_date' => ['required', 'date', 'after_or_equal:today'],
             'appointment_time' => ['required', 'date_format:H:i', 'after:10:00', 'before:22:00'],
@@ -46,7 +46,7 @@ class AppointmentsController extends Controller
         Appointment::create($validatedData);
 
         
-        return redirect()->route('home.index')->with('success', 'Вы успешно записались на услугу!');
+        return redirect()->route('appointments.create')->with('success', 'Вы успешно записались на услугу! Наш менеджер с Вами свяжется.');
     }
 
     public function show($id)

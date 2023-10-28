@@ -1,39 +1,52 @@
 @extends('layouts.app')
-
+@section('page.title', 'Административная панель, добавление услуг')
 @section('content')
 
-    <h1>Создать новую услугу</h1>
+<x-container-6>
+        <x-alert-success />
+        <x-validation-errors />
 
-    <x-validation-errors />
+        <x-form-card>
+            <x-form-card-header>
+                <x-form-card-title>
+                    {{ __('Создать новую услугу') }}
+                </x-form-card-title>
+            </x-form-card-header>
 
-    <form action="{{ route('service.store') }}" method="POST" enctype="multipart/form-data">
+            <x-form-card-body>
+    <x-form action="{{ route('service.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <div class="form-group">
-            <label for="name">Название услуги</label>
-            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
-        </div>
-
-        <div class="form-group">
-            <label for="description">Описание</label>
-            <textarea type="text" class="form-control" name="description" id="description" rows="5" value="{{ old('description') }}"></textarea>
-        </div>
+        <x-form-floating>
+            <x-form-input name="name" id="name" placeholder="Ваше имя:"
+                value="{{ old('name') }}" autofocus />
+                    <x-form-label required>{{ __('Название услуги:') }}</x-form-label>
+                     <x-errors-form name="name" />
+        </x-form-floating>
         
-        <div class="form-group">
-            <label for="price">Стоимость</label>
-            <input type="number" class="form-control" name="price" id="price" value="{{ old('price') }}">
+        <x-form-floating>
+            <x-form-input type="number" name="price" id="price" placeholder="Ваше имя:"
+                value="{{ old('price') }}" />
+                    <x-form-label required>{{ __('Стоимость:') }}</x-form-label>
+                     <x-errors-form name="price" />
+        </x-form-floating>
+
+        <x-form-floating>
+            <x-form-input name="duration_minutes" id="duration_minutes" placeholder="Ваше имя:"
+                value="{{ old('duration_minutes') }}" />
+                    <x-form-label required>{{ __('Длительность:') }}</x-form-label>
+                     <x-errors-form name="duration_minutes" />
+        </x-form-floating>
+
+        <div class="form-group mb-2">
+            <textarea type="text" class="form-control" placeholder="Описание услуги: *" name="description" id="description" rows="5" value="{{ old('description') }}"></textarea>
+            <x-errors-form name="description" />
         </div>
 
-        <div class="form-group">
-            <label for="duration_minutes">Длительность</label>
-            <input type="text" class="form-control" name="duration_minutes" id="duration_minutes" value="{{ old('duration_minutes') }}">
-        </div>
-        
-
-        <button type="submit" class="btn btn-primary">Создать услугу</button>
-        
-        <a href="{{ route('service.index') }}" class="btn btn-secondary">Отмена</a>
-
-    </form>
-    
+                        <x-btn-black-submit>{{ __('Создать услугу') }}</x-btn-black-submit>
+                    <x-btn-cancel href="{{ route('service.index') }}">{{ __('Отмена') }}</x-btn-cancel>
+                </x-form>
+            </x-form-card-body>
+        </x-form-card>
+    </x-container-6>
 @endsection

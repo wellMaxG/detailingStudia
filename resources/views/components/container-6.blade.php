@@ -1,4 +1,4 @@
-<div class="container col-sm-6" data-bs-theme="dark" {{ $attributes }}>
+<div class="container col-sm-8" data-bs-theme="dark" {{ $attributes }}>
 
     {{ $slot }}
 

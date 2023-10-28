@@ -1,12 +1,9 @@
 @extends('layouts.app')
-
 @section('page.title','Административная панель')
-
 @section('content')
 
-<x-alert-success />
-
-    <div class="container">
+<div class="container">
+        <x-alert-success />
         
         <h5 class="mb-3">{{ __('Добро пожаловать в административную панель!') }}</h5>
 

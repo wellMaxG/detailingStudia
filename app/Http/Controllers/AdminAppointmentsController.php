@@ -11,9 +11,12 @@ class AdminAppointmentsController extends Controller
 {
     public function index()
     {
-        // Получаем список всех записей из базы данных \\
-        $appointments = Appointment::all(); 
-        return view('admin.appointments.index', compact('appointments'));
+        
+    $appointments = Appointment::orderBy('appointment_date')->orderBy('appointment_time')->where('appointment_date', '>=', Today())->get();
+    return view('admin.appointments.index', compact('appointments'));
+
+        // $appointments = Appointment::all(); 
+        // return view('admin.appointments.index', compact('appointments'));
     }
 
     public function create()
@@ -28,7 +31,7 @@ class AdminAppointmentsController extends Controller
         // Валидация данных
         $validatedData = $request->validate([
             'client_name' => ['required', 'string', 'max:100', 'regex:/^[^0-9].*$/'],
-            'phone' => ['required', 'string','min:11', 'max:12'],
+            'phone' => ['required', 'string','min:11', 'max:16'],
             'service_id' => ['required', 'exists:services,id'],
             'appointment_date' => ['required', 'date', 'after_or_equal:today'],
             'appointment_time' => ['required', 'date_format:H:i', 'after:10:00', 'before:22:00'],
@@ -66,7 +69,7 @@ class AdminAppointmentsController extends Controller
         // Валидация данных, пример:
         $validatedData = $request->validate([
             'client_name' => ['required', 'string', 'max:100', 'regex:/^[^0-9].*$/'],
-            'phone' => ['required', 'string','min:11', 'max:12'],
+            'phone' => ['required', 'string','min:11', 'max:16'],
             'service_id' => ['required', 'exists:services,id'],
             'appointment_date' => ['required', 'date', 'after_or_equal:today'],
             'appointment_time' => ['required', 'after:10:00', 'before:22:00'],

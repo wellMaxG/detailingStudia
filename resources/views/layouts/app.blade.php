@@ -6,12 +6,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('page.title', config('app.name'))</title>
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <!-- Scripts -->
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
-    
+
+<body>    
 
     <div class="d-flex flex-column justify-content-between min-vh-100 text-white" id="app">
         
@@ -19,16 +21,14 @@
         
         <main> 
             
-            @yield('content')     
-
+            @yield('content')            
+            
             @include('includes.buttonTop')
-        
         </main>
-
+        
         @include('includes.footer')
-
+        
     </div>
-
+    
 </body>
-
 </html>

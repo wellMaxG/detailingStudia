@@ -1,7 +1,12 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#phone').mask('9 (999) 999-9999');
+  });
+</script>
 @extends('layouts.app')
-
 @section('page.title', 'Административная панель, добавление записи на услугу')
-
 @section('content')
 
 

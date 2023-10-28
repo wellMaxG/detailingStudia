@@ -1,54 +1,47 @@
 @extends('layouts.app')
-
+@section('page.title', 'Список клиентов')
 @section('content')
 
-<x-alert-success />
+<x-container>
+    <x-form-card>
+        <x-alert-success />
 
-    <h1>Список клиентов</h1>
+        <x-form-card-header>
+            <x-form-card-title>
+                {{ __('Список клиентов') }}
+            </x-form-card-title>
+        </x-form-card-header>
 
-    <x-span-bt-create href="{{ route('user.create') }}">Добавить клиента</x-span-bt-create>
+        <x-form-card-header class="text-end">
+            <x-btn-black class="btn-outline-success" href="{{ route('user.create') }}">{{ __('Добавить клиента') }}</x-btn-black>
+            <x-btn-black href="{{ route('admin.dashboard') }}">{{ __('Назад') }}</x-btn-black>
+        </x-form-card-header>
 
-    <x-table>
-
-        <thead>
-
-            <tr>
-                <th>ID</th>
+    <x-table-responsive>
+        <x-table>
+            <thead>
+                <tr>
                 <th>Имя</th>
                 <th>Email</th>
                 <th>Телефон</th>
                 <th>Действия</th>
-            </tr>
-
-        </thead>
+                </tr>
+            </thead>
 
         <tbody>
-
             @foreach ($users as $user)
-
                 <tr>
-                    <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
                     <td>
-
-                        <x-span-bt-edit href="{{ route('user.edit', $user->id) }}">Редактировать</x-span-bt-edit>
-
-                        <x-bt-show href="{{ route('user.show', $user->id) }}">Просмотреть</x-bt-show>
-
-                        <x-span-bt-delete href="{{ route('user.delete', $user->id) }}">Удалить</x-span-bt-delete>
-
+                        <x-btn-black href="{{ route('user.show', $user->id) }}">{{ __('подробнее...') }}</x-btn-black>
                     </td>
-
                 </tr>
-
-            @endforeach
-
-        </tbody>
-
-    </x-table>
-
-    <x-span-bt-create href="{{ route('admin.dashboard') }}">Назад</x-span-bt-create>
-
+                        @endforeach
+                    </tbody>
+                </x-table>
+            </x-table-responsive>
+        </x-form-card>
+    </x-container>
 @endsection

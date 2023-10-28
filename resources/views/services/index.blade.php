@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('page.title', 'Страница услуг')
-
 @section('content')
 
 <x-alert-success />

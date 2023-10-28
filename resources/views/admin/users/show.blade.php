@@ -1,35 +1,27 @@
 @extends('layouts.app')
-
+@section('page.title', 'Информация о клиенте')
 @section('content')
 
-    <div class="container">
+<x-container-6>
+    <x-form-card>
+        <x-form-card-header>
+            <x-form-card-title>
+                {{ __('Информация о клиенте:') }}
+            </x-form-card-title>
+                </x-form-card-header>
 
-        <h1>Подробности</h1>
+                    <x-form-card-body>
 
-            <div class="card">
+                    <p>Имя клиента: <strong>{{ $user->name }}</strong></p>
 
-                <div class="card-header">
-            
-                    {{__('Информация о клиенте:')}}
-            
-                </div>
-            
-                <div class="card-body">
-            
-                    {{-- <p><strong>ID:</strong> {{ $client->id }}</p> --}}
-            
-                    <p><strong>Имя:</strong> {{ $user->name }}</p>
-            
-                    <p><strong>Телефон:</strong> {{ $user->phone }}</p>
-            
-                    <p><strong>Email:</strong> {{ $user->email }}</p>
-            
-                    <a href="{{ route('user.index') }}" class="btn btn-primary">Назад к списку клиентов</a>
-            
-                </div>
-                
-            </div>
-    
-        </div>
+                    <p>Телефон клиента: <strong>{{  $user->phone }}</strong></p>
 
+                    <p>Почта клиента: <strong>{{ $user->email }}</strong></p>
+                    
+                        <x-btn-black class="btn-outline-primary" href="{{ route('user.edit', $user->id) }}">{{ __('Редактировать') }}</x-btn-black>
+                    {{-- <x-btn-black class="btn-outline-danger" href="{{ route('user.delete', $user->id) }}">{{ __('Удалить') }}</x-btn-black> --}}
+                <x-btn-black href="{{ route('user.index') }}" class="btn btn-primary">{{ __('Назад к списку клиентов') }}</x-btn-black>
+            </x-form-card-body>
+    </x-form-card>
+</x-container-6>
 @endsection

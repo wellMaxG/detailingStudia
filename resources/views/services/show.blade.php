@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('page.title', 'Информация о услуге')
-
 @section('content')
 
 <x-container-6>

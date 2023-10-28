@@ -11,6 +11,5 @@
         'class' => 'btn btn-outline-success custom-border',
     
             'type' => 'submit'
-            
         
         ]) }}> {{ $slot }} </button>

@@ -21,51 +21,17 @@ class AdminServicesController extends Controller
 
     public function store(Request $request)
     {
-        // $service = Service::findOrFail($id);
-        // Валидация данных, пример:
         $validatedData = $request->validate([
-            'name' => 'required|string',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric',
-            'duration_minutes' => 'required|string',
-            'background_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'name' => ['required', 'string', 'max:255', 'regex:/^[^0-9].*$/'],
+            'description' => ['required', 'string'],
+            'price' => ['required', 'numeric'],
+            'duration_minutes' => ['required', 'string'],
+            'background_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
-        // if ($request->hasFile('image_url')) {
-        //     $backgroundImage = $request->file('image_url');
-        //     $backgroundImageName = time() . '.' . $backgroundImage->getClientOriginalExtension();
-        //     $backgroundImage->move(public_path('backgrounds'), $backgroundImageName);
-        //     $service->image_url = '/backgrounds/' . $backgroundImageName;
-        // }
-        // if ($request->hasFile('image')) {
-        //     $image = $request->file('image');
-        //     $imagePath = time() . '.' . $image->getClientOriginalExtension();
-        //     $image->move(public_path('images'), $imagePath);
-    
-        
-        // Создаем новую услугу в базе данных
         Service::create($validatedData);
 
-        // Редирект на страницу со списком услуг
         return redirect()->route('service.index')->with('success', 'Услуга успешно добавлена!');
     }
-//     public function uploadAvatar(Request $request)
-// {
-//     $request->validate([
-//         'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-//     ]);
-//     if ($request->hasFile('image_url')) {
-//         $image_url = $request->file('image_url');
-//         $imageName = time() . '.' . $image_url->getClientOriginalExtension();
-//         $image_url->move(public_path('photos'), $imageName);
-
-//         // $validatedData->image_url = '/photos/' . $imageName;
-//         $validatedData['image_url'] = '/storage/' . $imageName;
-//     }
-//     Service::create($validatedData);
-
-//     return back()->with('success', 'Аватар успешно загружен.');
-// }
-    // }
 
     public function edit(Service $service)
     {
@@ -104,11 +70,11 @@ class AdminServicesController extends Controller
     $service = Service::findOrFail($id);
 
     $validatedData = $request->validate([
-        'name' => 'required|string',
-        'description' => 'required|string',
-        'price' => 'required|numeric',
-        'duration_minutes' => 'required|string',
-        'background_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'name' => ['required', 'string', 'max:255', 'regex:/^[^0-9].*$/'],
+        'description' => ['required', 'string'],
+        'price' => ['required', 'numeric'],
+        'duration_minutes' => ['required', 'string'],
+        'background_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
     ]);
 
     // Обработка загрузки изображения фона
@@ -121,7 +87,7 @@ class AdminServicesController extends Controller
 
     $service->update($validatedData);
 
-    return redirect()->route('service.index')->with('success', 'Информация об услуге обновлена успешно.');
+    return redirect()->route('service.show', $service->id)->with('success', 'Информация об услуге обновлена успешно.');
 }
 
 

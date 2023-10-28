@@ -24,5 +24,14 @@ class ServicesController extends Controller
 
     }
 
+   
+    public function serviceSsection()
+    {
+
+        $services = Service::all();
+
+        return view('services.serviceSsection', compact('services'));
+
+    }
 }
 
