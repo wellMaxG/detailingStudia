@@ -1,7 +1,296 @@
 // Body
-$body-bg: #f8fafc;
+// $body-bg: #000000;
+// $body-color: #f5f5f5;
+
+$color1: #2b0143;
+$color-border: #a9a9a9;
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+#app {
+  text-align: center;
+  background: #222222 url('/public/backgrounds/1234.jpg') 50%/ cover no-repeat;
+
+}
+
+// ________________/* Стили для кнопки "На вверх" *\________________
+.onTop{
+  position:absolute;
+  width: 35px;
+  height: 35px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  background: url('/public/backgrounds/onTop.png') 50%/ cover no-repeat;
+  z-index: 1000;
+}
+.onTop:hover {
+  transform: translateY(-5px);
+}
+
+// ________________/* Стили для кнопки "На главную" *\________________
+.btn-custom {
+  background-color: #2b0143; /* Цвет фона кнопки */
+  color: #fff; /* Цвет текста */
+  border: #ffffff; /* Цвет границы */
+  border-radius: 5px; /* Закругленные углы */
+  padding: 7px 10px; /* Отступы внутри кнопки */
+  font-size: 14px; /* Размер текста */
+  // text-align: center; /* Выравнивание текста по центру */
+  cursor: pointer; /* Стиль указателя при наведении */
+  transition: background-color 0.3s, color 0.3s; /* Анимация при наведении */
+  text-decoration: none; 
+}
+.btn-custom:hover {
+  background-color: #ffc107; /* Цвет фона при наведении */
+  color: #000000; /* Цвет текста при наведении */
+}
+
+// ________________/* Стили для кабинета администратора *\________________
+.dashboard-card { 
+  background: url('/public/img/fon1.jpg');
+  background-size: cover; /* Масштабирование изображения, чтобы заполнить всю область фона */
+  background-position: center center; /* Положение изображения по центру */
+}
+.icon {
+  width: 30px;
+  height: 30px;
+  border: 1px solid $color-border;
+  border-radius: 50%;
+}
+.avatar {
+  width: 230px;
+  height: 230px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+}
+
+.serviceImg {
+  margin-left: 20px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+}
+// ________________/* Стили для карточки услуг *\________________
+.service-card {
+  text-align:center;
+  border:1px solid #a9a9a9; /* Цвет границы */
+  border-radius: 3px;
+  overflow: hidden;
+  height: 200px;
+  background-size: cover; /* Масштабирование изображения, чтобы заполнить всю область фона */
+  background-position: center center; /* Положение изображения по центру */
+  background-repeat: no-repeat; /* Отключение повторения изображения */
+  // font-family:'Franklin Gothic Medium',;
+}
+.service-card-header {
+  padding:20px; /* Отступы внутри карточки */
+}
+.service-tint-card-bg{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Здесь вы можете настроить цвет и прозрачность фона */
+}
+.service-card-animation{
+  transition: transform 0.3s, color 0.4s; /* Анимация при наведении */
+  text-decoration: none;
+  color: #ffffff;
+}
+.service-card-animation:hover{
+  // transform: translateX(10px); /* Цвет фона при наведении */
+  color: #ffc107;
+}
+.service-card-footer a {
+  border:1px solid #a9a9a9; /* Цвет границы */
+  margin-top: 3px;
+  width: 100%; /* Ширина кнопки равна 100% ширины родительского блока */
+}
+
+.custom-border {
+  border: 1px solid $color1 !important;
+  color: #fff !important;
+}
+
+.form-control:focus, .form-select:valid:focus {
+  border: 1px solid $color1 !important;
+  box-shadow: 0 0 5px $color1 !important;
+}
+.required::after{
+content: '*'; 
+color:#981602;
+margin-left: 3px;
+}
+
+
+/* Скрываем поле с отображением имени файла */
+input[type="file"] {
+  display: none;
+}
+
+/* Стилизируем кастомную кнопку загрузки файла */
+.custom-file-upload {
+  border: 1px solid $color1;
+  display: inline-block;
+  color: #f5efef; /* Цвет текста */
+  font-size: 13px; /* Размер текста */
+  padding: 6px 8px;
+  // margin-right: 4px;
+  cursor: pointer;
+  background-color: #22222286;
+  transition: background-color 0.3s, color 0.3s; /* Анимация при наведении */
+  border-radius: 3px;
+}
+
+.custom-file-upload:hover {
+  background-color: #ffc107;
+  color: #141414; /* Цвет текста */
+}
+ul {
+  list-style-type: none;
+  padding-inline-start: 20px !important;
+  padding-top: 10px;
+
+}
+.header {
+  background-color: #030303;
+  color: #fff;
+  padding: 10px 0;
+}
+
+  .welcome-section {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  background-repeat: no-repeat;
+  background-image: url('/public/backgrounds/1234.jpg');
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+
+}
+
+.welcome-section h4{
+  color:#000000;
+  border-radius: 5px;
+  background-color:#ffc107;
+  padding: 15px;
+  margin: 150px 30px 0;
+}
+.welcome-section h1 {
+  margin:20px 30px 0 30px;
+  font-size: 36px;
+}
+.welcome-section h3 {
+  margin: 10px 20px 120px;
+  color: #ffc107;
+}
+.welcome-section p {
+  margin-top: 10px;
+  margin-right: 40px;
+  margin-left:40px;
+  color: #ffc107;
+  font-size: 17px;
+}
+
+.services-section {
+  overflow: hidden;
+  background: #030303;
+  padding: 10px 0;
+
+}
+
+.services-section h2 {
+  font-size: 22px;
+}
+
+.services-section p {
+
+  font-size: 16px;
+}
+
+.portfolio-section {
+  
+  text-align: center;
+  background-image: url('/public/backgrounds/34.jpg');
+  background-size: cover;
+  background-position: center center;
+  padding: 10px 0;
+  height: auto;
+
+}
+
+.portfolio-section h2 {
+  font-size: 22px;
+}
+.portfolio-section p {
+  margin-right: 60px;
+  margin-left:60px;
+  color: #ffc107;
+  font-size: 18px;
+}
+
+/* Нижняя панель навигации и футер */
+footer {
+  background-color: #030303;
+  color: #fff;
+  padding: 10px 0;
+}
+
+footer nav {
+  text-align: center;
+}
+
+footer .footer-menu li {
+  display: inline;
+  margin-right: 20px;
+}
+
+footer .footer-menu a {
+  text-decoration: none;
+  color: #ffc107;
+}
+
+.footer-contact-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.swiper {
+width: auto;
+height: auto;
+
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #030303;
+  display: flex;
+  align-items: center;
+}
+
+.swiper-slide img {
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  display: block;
+  width: 700px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-brand img {
+  margin-left: 15px;
+  width: 60px; /* Установите нужную ширину для вашего логотипа */
+  height: auto; /* Автоматическая высота, чтобы сохранить пропорции */
+}

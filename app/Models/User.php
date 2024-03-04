@@ -10,12 +10,6 @@ use Laravel\Sanctum\HasApiTokens;
 
 
 
-
-
-// use Laravel\Passport\HasApiTokens;
-
-
-
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -28,7 +22,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
+        'role',
+        'avatar',
+
     ];
 
     /**
@@ -50,4 +48,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function roles()
+{
+    
+    return $this->belongsToMany(Role::class);
+}
+
 }

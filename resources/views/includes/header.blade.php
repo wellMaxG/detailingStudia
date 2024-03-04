@@ -1,0 +1,109 @@
+<nav class="header navbar sticky-top navbar-expand-lg" data-bs-theme="dark">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="{{ route('home.index') }}">
+            <img width="50px" height="50px" src="/backgrounds/logo.png" alt="Logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+            aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a href="{{ route('home.index') }}" class="nav-link  {{ active_link('home.index') }}"
+                        aria-current="page">
+                        {{ __('Главная') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('services.index') }}" class="nav-link {{ active_link('services.index') }}"
+                        aria-current="page">
+                        {{ __('Услуги') }}
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a href="{{ route('appointments.create') }}"
+                        class="nav-link {{ active_link('appointments.create') }}" aria-current="page">
+
+                        {{ __('Записаться online') }}
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('home.contact') }}" class="nav-link {{ active_link('home.contact') }}"
+                        aria-current="page">
+                        {{ __('Контакты') }}
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link {{ active_link('login') }}"
+                                href="{{ route('login') }}">{{ __('Вход') }}</a>
+                        </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link {{ active_link('register') }}"
+                                href="{{ route('register') }}">{{ __('Регистрация') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropstart">
+                        <a id="navbarDropdown" class="btn btn-dark dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+
+                            <a href="{{ route('office.profile') }}" class="dropdown-item" aria-current="page">
+
+                                {{ __('Личный кабинет') }}
+
+                            </a>
+
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                               
+                               document.getElementById('logout-form').submit();">
+
+                                {{ __('Выход') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+
+                    <li class="nav-item">
+
+
+                    @if (auth()->user()->role === 'admin')
+                    <x-btn-black class="custom-file-upload ms-1" href="{{ route('admin.dashboard') }}">{{ __('Административная панель') }}</x-btn-black>
+
+                    </li>
+                    @endif
+                    </li>
+
+                @endguest
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
